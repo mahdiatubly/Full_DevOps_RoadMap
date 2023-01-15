@@ -1,6 +1,6 @@
 # Git
 
-## Some of tricky commands
+## Some tricky commands
 
 - To discover the branches that the current branch is istantiated from:
 

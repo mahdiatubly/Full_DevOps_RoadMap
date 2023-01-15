@@ -1,20 +1,10 @@
-## Some important Bash Shell commands:
+# Jenkins
 
-- su - (userID) => To switch the user of the computer or server ex: _$ su - mahdi_
-- weget [url]=> is a command-line utility for downloading files from the web ex: _weget http//..._
-- ssh -i /home/mike/.ssh/jenkins_key -l mike -p 8022 jenkins-server help =>
-  -i flag is used to point to mike's private SSH key. Remember, we have already added the public key in the Jenkins configuration.
-  -l is the login user which in our example is mike
-  -p is the port which we found out in the previous step to be 8022
-- To get info about the OS that you are using through bash shell you can use the following command:
+_Note: To add publick key to Jenkins to eanble jenkins cli on your terminal, you have to paste it in the right format, for example:_
 
-        cat /etc/os-release
-
-_Note: To add publick key to Jenkins to eanble jenkins cli on your terminal, you have to paste it in the right format, for example: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTkkUH0Gz1L9VPQ8iEif7kOloqI6sJuRkQgEXQF4LpAk9jrA/7u4ifKhA7sQemnfTg9QzL6wFH9wN/dj2B19VUQKh4ElSEbG4dJHFNh8JbnMDiSHaNmi0bq81Sqi++hFuhtG3pcDqYbLtSLqBkL8hL/+v3cQhjyOvwKPQaFMEh2v0Rv37W1l8AsT3LxfB0SZjFgYOgzB23U7wd89BIvAuado1QTkBqmSF9xctqHU+8A3j0wk8Qv6Gz573idXp7IQtmcQ5Ol7OBVS+ki13eJhrhIBYuGps0GGTR+tNXyJvSXqnRjB/DBYJbBvbSsMirzC9cOodQxO0NkBCduh/bsuDoHBIyMlHjJtEsTyLaf3DRdCWq6UqDe9AitoIbnusukM743aduJmJLjdyyPI6MudT+nrwZh1KkfSt7w72Pet2Trx5EUrdyjDswnRf44zHlKaEVBpLHMHG0K+lmq2m0VzWYgNdFqfZXaieDiREH5AaC4qBeJDt+D2qTnYFvACPcApk= mike@jenkins-server_
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTkkUH0Gz1L9VPQ8iEif7kOloqI6sJuRkQgEXQF4LpAk9jrA/7u4ifKhA7sQemnfTg9QzL6wFH9wN/dj2B19VUQKh4ElSEbG4dJHFNh8JbnMDiSHaNmi0bq81Sqi++hFuhtG3pcDqYbLtSLqBkL8hL/+v3cQhjyOvwKPQaFMEh2v0Rv37W1l8AsT3LxfB0SZjFgYOgzB23U7wd89BIvAuado1QTkBqmSF9xctqHU+8A3j0wk8Qv6Gz573idXp7IQtmcQ5Ol7OBVS+ki13eJhrhIBYuGps0GGTR+tNXyJvSXqnRjB/DBYJbBvbSsMirzC9cOodQxO0NkBCduh/bsuDoHBIyMlHjJtEsTyLaf3DRdCWq6UqDe9AitoIbnusukM743aduJmJLjdyyPI6MudT+nrwZh1KkfSt7w72Pet2Trx5EUrdyjDswnRf44zHlKaEVBpLHMHG0K+lmq2m0VzWYgNdFqfZXaieDiREH5AaC4qBeJDt+D2qTnYFvACPcApk= mike@jenkins-server_
 
 _Plugins allow you to connect to other services._
-
----
 
 - Promethmeus and Grafana are used to folow the logs of jenkins server, Grafana used specifically to visualize the logs of the jenkins server.
 
@@ -52,3 +42,15 @@ The build agent is the server that tackle the processing burden, it may be the j
     }
   }
   ```
+
+## Some important Bash Shell commands:
+
+- su - (userID) => To switch the user of the computer or server ex: _$ su - mahdi_
+- weget [url]=> is a command-line utility for downloading files from the web ex: _weget http//..._
+- ssh -i /home/mike/.ssh/jenkins_key -l mike -p 8022 jenkins-server help =>
+  -i flag is used to point to mike's private SSH key. Remember, we have already added the public key in the Jenkins configuration.
+  -l is the login user which in our example is mike
+  -p is the port which we found out in the previous step to be 8022
+- To get info about the OS that you are using through bash shell you can use the following command:
+
+        cat /etc/os-release
