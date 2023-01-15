@@ -23,5 +23,41 @@
 
 - To remove a commit:
 
-        #You have to change the head from the last commit to be deletable.
+        #With --hard will remove the commit and all the changes in it.
         $git reset --hard HEAD~1
+
+        #With --soft will leave the changes in the staging area.
+        $git reset --soft HEAD~1
+
+        #Also you can use revert which will create a new commit that shows that the commits change has deleted or reverted.
+        $git revert 0953213565.....[the required commit SHA]
+
+- To transfer changes from main branch to yours without lefting a merging commit you can use rebasing. (However, notice that rebasing will change the hashs of the commites where it creates a new copies of the commits not just transfering them):
+
+        #The current branch will be on top of main branch
+        $git rebase main
+
+- To get a specific commit from main branch:
+
+        $git cherry-pick 0953213565.....[the required commit SHA]
+
+- In the case that you want to work with a previous commit while you have new change that is not ready to be committed, then you can save them in the stash:
+
+        #To add changes to the stashing area:
+        $git stash
+
+        #To retrieve the changes
+        $git stash pop stash@{0}
+
+        #To list all the changes in the stash
+        $git stash list
+
+        #To show the changes in the stash
+        $git stash show stash@{0}
+
+- To see all the log of the reseting actions:
+
+        $git reflog
+
+        To return back to a reseted commit from ref log
+        $git reset --hard 09635135...[commit SHA]
