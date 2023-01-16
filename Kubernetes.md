@@ -11,6 +11,8 @@ _You can use any letter other than k to be the alias._
 - To get all the nodes in the cluster:
 
         $ kubectl get nodes
+        # For more details
+        $ kubectl get nodes -o wide
 
 - To get all the namespaces in the cluster:
 
@@ -28,6 +30,30 @@ _You can use any letter other than k to be the alias._
 
         # kubectl run [pod name] --image=[image name]
         $ kubectl run nginx --image=nginx
+
+- To create a pod using YAML file:
+
+```
+        # the version of Kubernrtes api
+        apiVersion: v1
+        # The kind of the component that you want to create
+        kind: Pod
+        metadata:
+                name: first-pod
+                #You can add more labels
+                labels:
+                        app: first-app
+                        type: front-end
+        # The specifications of the element
+        spec:
+                containers:
+                        -name: nginx-container
+                        - image: nginx
+```
+
+Then run:
+
+                $ kubectl create -f file-name.yml
 
 - To get the pod's information:
 

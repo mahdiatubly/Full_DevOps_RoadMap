@@ -29,11 +29,12 @@ _You can pipe the result to wc -l command to get the number of images or contain
         # docker container(optional) -d --name [container name] [image used to create the container] [you can a process to run on the container]
         # To assign an environment variable in the running process use -e as in the second example.
         $ docker run -d --name first-container nginx
+        # -p [port # on the host]:[port number on the container]
         $ docker container run --name first-container -e lesson=docker -p 38282:8080 nginx
         # If you don't want to download the image you can just pull the image
         $ docker pull nginx
 
-*As a default Docker uses the latest version of the image, if you want to use a specific version you can use tags:*
+_As a default Docker uses the latest version of the image, if you want to use a specific version you can use tags:_
 
         # docker run [image name]: [the verion]
         $ docker run redis: 4.0
@@ -104,7 +105,7 @@ _Instead removing all the images you can filter the result using grep command_
         # docker run -v [location on the server]: var/lib/mysql mysql
         $ docker run -v Downlads/dataDirect: var/lib/mysql mysql
 
-- To run an application that distributed through multiple containers, then you need to create a yaml file. It will run all of the app services and lik them to each other. Following is the structure of the yaml file:
+- To run an application that distributed through multiple containers, then you need to create a YAML file. YAML is a data format similar to JASON and XML,It will run all of the app services and lik them to each other. Following is the structure of the YAML file:
 
         [The container name]:
             image: [base image of the container] (if you did not create the the image you can just use instead of image {build: [the project path that contains the Dockerfile] )
@@ -113,6 +114,23 @@ _Instead removing all the images you can filter the result using grep command_
             links:
                 - [the name of the linked container]
 
-- After creating the yaml file, run it through the following command (this will compose the app):
+- Some rules of YAML format:
 
-        docker-compose up
+```
+        - key value pairs => key:[space] value /: Fruite: Apple
+        - List => Fruits:
+                  - Apple
+                  - Orange
+                  - ...
+        - Ditionary => Apple:
+                       [space]  color: green
+                                Origin: Jordan
+                        Orange:
+                                color: orange
+                                origin: Jordan
+        - Comments => # The comment
+```
+
+- After creating the compose file in YAML format, run it through the following command (this will compose the app):
+
+        $docker-compose up
