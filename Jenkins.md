@@ -53,4 +53,11 @@ The build agent is the server that tackle the processing burden, it may be the j
   -p is the port which we found out in the previous step to be 8022
 - To get info about the OS that you are using through bash shell you can use the following command:
 
-        cat /etc/os-release
+        $cat /etc/os-release
+
+- To run a file with .sh extention:
+
+        $sh fileName.sh
+        #To run it contiuously
+        $ ./fielname.sh
+
