@@ -175,8 +175,9 @@ To get help in defining a problem in the YAML file:
 
 - There are three types of services:
 
-          - NodePort service: it help in mapping the port on the node (called nodePort) to a port on the pod (called targetPort) The service and pods have IP addresses, the IP address of the service called the cluster IP address of the service. Without services users can't access the pods content.
+        - NodePort service: it help in mapping the port on the node (called nodePort) to a port on the pod (called targetPort) The service and pods have IP addresses, the IP address of the service called the cluster IP address of the service. Without services users can't access the pods content.
           To create a nodePort service using YAML file then follow the following structure:
+
           ```
           apiVersion: v1
           # The kind of the component that you want to create
@@ -197,16 +198,18 @@ To get help in defining a problem in the YAML file:
                           type: frontEnd
 
           ```
-          Then run `create -f` command as with other type of kurbenetes components.
 
-         - ClusterIP: provides an interface to access a group of pods like backend pods, redis pods, and frontend pods. To create a a clusterIP follwo the structure of the following file:
+        Then run `create -f` command as with other type of kurbenetes components.
+
+        - ClusterIP: provides an interface to access a group of pods like backend pods, redis pods, and frontend pods. To create a a clusterIP follwo the structure of the following file:
+
                 ```
                 apiVersion: v1
-          # The kind of the component that you want to create
-          kind: Service
-          metadata:
-                  name: first-clusterIP-svc
-          spec:
+                # The kind of the component that you want to create
+                kind: Service
+                metadata:
+                        name: first-clusterIP-svc
+                spec:
                   type: CulusterIP
                   ports:
                           - targetPort: 80
@@ -218,7 +221,7 @@ To get help in defining a problem in the YAML file:
                           type: frontEnd
                 ```
 
-         Then run `create -f` command as with other type of kurbenetes components.
+        Then run `create -f` command as with other type of kurbenetes components.
 
 - To create a service to a deployment (will assign a cluster IP address to the deployment and it's not accessable outside the kuberenetes cluster):
 
