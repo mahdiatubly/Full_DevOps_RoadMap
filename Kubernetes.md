@@ -175,33 +175,33 @@ To get help in defining a problem in the YAML file:
 
 - There are three types of services:
 
-        - NodePort service: it help in mapping the port on the node (called nodePort) to a port on the pod (called targetPort) The service and pods have IP addresses, the IP address of the service called the cluster IP address of the service. Without services users can't access the pods content.
-          To create a nodePort service using YAML file then follow the following structure:
+- NodePort service: it help in mapping the port on the node (called nodePort) to a port on the pod (called targetPort) The service and pods have IP addresses, the IP address of the service called the cluster IP address of the service. Without services users can't access the pods content.
+  To create a nodePort service using YAML file then follow the following structure:
 
-          ```
-          apiVersion: v1
-          # The kind of the component that you want to create
-          kind: Service
-          metadata:
-                  name: first-node-port-svc
-          spec:
-                  type: NodePort
-                  ports:
-                          - targetPort: 80
-                            #The service port, it's optional, if not specified will be the same as the target port automatically.
-                            port: 80
-                            #NodePort is also optional and should be in the range of(30000-32767)0.If it's not assigned will be picked randomly from this range.
-                            nodePort: 30008
-                  selector:
-                          #Pull the label attribute from the pod YAML file
-                          app: firstApp
-                          type: frontEnd
+            ```
+            apiVersion: v1
+            # The kind of the component that you want to create
+            kind: Service
+            metadata:
+                    name: first-node-port-svc
+            spec:
+                    type: NodePort
+                    ports:
+                            - targetPort: 80
+                              #The service port, it's optional, if not specified will be the same as the target port automatically.
+                              port: 80
+                              #NodePort is also optional and should be in the range of(30000-32767)0.If it's not assigned will be picked randomly from this range.
+                              nodePort: 30008
+                    selector:
+                            #Pull the label attribute from the pod YAML file
+                            app: firstApp
+                            type: frontEnd
 
-          ```
+            ```
 
-        Then run `create -f` command as with other type of kurbenetes components.
+Then run `create -f` command as with other type of kurbenetes components.
 
-        - ClusterIP: provides an interface to access a group of pods like backend pods, redis pods, and frontend pods. To create a a clusterIP follwo the structure of the following file:
+- ClusterIP: provides an interface to access a group of pods like backend pods, redis pods, and frontend pods. To create a a clusterIP follwo the structure of the following file:
 
                 ```
                 apiVersion: v1
@@ -221,7 +221,7 @@ To get help in defining a problem in the YAML file:
                           type: frontEnd
                 ```
 
-        Then run `create -f` command as with other type of kurbenetes components.
+Then run `create -f` command as with other type of kurbenetes components.
 
 - To create a service to a deployment (will assign a cluster IP address to the deployment and it's not accessable outside the kuberenetes cluster):
 
