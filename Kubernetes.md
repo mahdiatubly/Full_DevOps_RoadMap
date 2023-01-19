@@ -175,8 +175,8 @@ To get help in defining a problem in the YAML file:
 
 - There are three types of services:
 
-- NodePort service: it help in mapping the port on the node (called nodePort) to a port on the pod (called targetPort) The service and pods have IP addresses, the IP address of the service called the cluster IP address of the service. Without services users can't access the pods content.
-  To create a nodePort service using YAML file then follow the following structure:
+1- NodePort service: it help in mapping the port on the node (called nodePort) to a port on the pod (called targetPort) The service and pods have IP addresses, the IP address of the service called the cluster IP address of the service. Without services users can't access the pods content.
+To create a nodePort service using YAML file then follow the following structure:
 
             ```
             apiVersion: v1
@@ -201,7 +201,7 @@ To get help in defining a problem in the YAML file:
 
 Then run `create -f` command as with other type of kurbenetes components.
 
-- ClusterIP: provides an interface to access a group of pods like backend pods, redis pods, and frontend pods. To create a a clusterIP follwo the structure of the following file:
+2- ClusterIP: provides an interface to access a group of pods like backend pods, redis pods, and frontend pods. To create a a clusterIP follwo the structure of the following file:
 
                 ```
                 apiVersion: v1
@@ -211,6 +211,28 @@ Then run `create -f` command as with other type of kurbenetes components.
                         name: first-clusterIP-svc
                 spec:
                   type: CulusterIP
+                  ports:
+                          - targetPort: 80
+                            #The service port, it's optional, if not specified will be the same as the target port automatically.
+                            port: 80
+                  selector:
+                          #Pull the label attribute from the pod YAML file
+                          app: firstApp
+                          type: frontEnd
+                ```
+
+Then run `create -f` command as with other type of kurbenetes components.
+
+3- LoadBalancer: used to provide a single IP address to user where the app is deployed on multiple pods and each has different IP address. This service is not offered in all environements, it's just on some cloud services provided by some of the vendors like Google and AWS.To create a a LoadBalancer follwo the structure of the following file:
+
+                ```
+                apiVersion: v1
+                # The kind of the component that you want to create
+                kind: Service
+                metadata:
+                        name: first-load-balancer-svc
+                spec:
+                  type: LoadBalancer
                   ports:
                           - targetPort: 80
                             #The service port, it's optional, if not specified will be the same as the target port automatically.

@@ -34,10 +34,18 @@ _You can pipe the result to wc -l command to get the number of images or contain
         # If you don't want to download the image you can just pull the image
         $ docker pull nginx
 
-_As a default Docker uses the latest version of the image, if you want to use a specific version you can use tags:_
+- To add an env. var. ito code:
+
+                >> x = os.environ.get(X)
+                => then in docker
+                $ docker run -e X=5000 first-image
+
+- As a default Docker uses the latest version of the image, if you want to use a specific version you can use tags:
 
         # docker run [image name]: [the verion]
         $ docker run redis: 4.0
+
+- The name flag is added to the container's running command mostly to be used in creating links between different containers.
 
 - To cancel deamon property of a running container:
 
@@ -79,10 +87,32 @@ _Instead removing all the images you can filter the result using grep command_
         # docker inspect [contaienr name or id]
         $ docker inspect first-container
 
-- To create an image you have to create a Dockerfile in the project directory, this file will contain the required instruction to run the application. Then, run:
+- To create an image you have to create a Dockerfile in the project directory, this file contains the required instruction to run the application. Following is an example on dockerfile:
+
+        # The base OS or image of the new image.
+        FROM Ubuntu
+
+        RUN apt-get update
+        RUN apt-get install python
+
+        RUN pip install Flask
+        RUN pip install Flask-mysql
+
+        # Copying the program code.
+        COPY ./code
+        # command defines the action that will run when the container directly created.
+        # If you try to update this command within the run statement the new value will
+        # replace the exist value while with ENTRYPOINT the given value will be appended
+        # to the exist value.
+        ENTRYPOINT["sleep"]
+        # Setting defaut value for ENTRYPOINT to avoid getting errors.
+        CMD["5"]
+
+Then, run:
 
         # docker build Dockerfile(mostly you need to write the path to the file without the file name) -t [image name]
         $ docker build Dockerfile -t first-image
+        $ docker run first-image 1000
 
 - To push the image to the docker registry (you may need to login before running this command):
 
@@ -105,14 +135,24 @@ _Instead removing all the images you can filter the result using grep command_
         # docker run -v [location on the server]: var/lib/mysql mysql
         $ docker run -v Downlads/dataDirect: var/lib/mysql mysql
 
-- To run an application that distributed through multiple containers, then you need to create a YAML file. YAML is a data format similar to JASON and XML,It will run all of the app services and lik them to each other. Following is the structure of the YAML file:
+- To run an application that distributed through multiple containers, then you need to create a YAML file. YAML is a data format similar to JASON and XML,It will run all of the app services and link them to each other. Following is the structure of the YAML file:
 
-        [The container name]:
-            image: [base image of the container] (if you did not create the the image you can just use instead of image {build: [the project path that contains the Dockerfile] )
-            ports:
-                - [#:#]
-            links:
-                - [the name of the linked container]
+        version: 2
+        services:
+                [The container name]:
+                image: [base image of the container] (if you did not create the the image you can just use instead of image {build: [the project path that contains the Dockerfile] )
+                ports:
+                        - [#:#]
+                depends_on:
+                        - [the name of the base container]
+                networks:
+                        - [backend]
+                ...
+                ..
+                .
+        networks:
+                [ex: front-end]:
+                [ex: backend]:
 
 - Some rules of YAML format:
 
