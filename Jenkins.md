@@ -1,6 +1,6 @@
 # Jenkins
 
-_Note: To add publick key to Jenkins to eanble jenkins cli on your terminal, you have to paste it in the right format, for example:_
+_Note: To add a public key to Jenkins to eanble jenkins cli on your terminal, you have to paste it in the right format, for example:_
 
         ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTkkUH0Gz1L9VPQ8iEif7kOloqI6sJuRkQgEXQF4LpAk9jrA/7u4ifKhA7sQemnfTg9QzL6wFH9wN/dj2B19VUQKh4ElSEbG4dJHFNh8JbnMDiSHaNmi0bq81Sqi++hFuhtG3pcDqYbLtSLqBkL8hL/+v3cQhjyOvwKPQaFMEh2v0Rv37W1l8AsT3LxfB0SZjFgYOgzB23U7wd89BIvAuado1QTkBqmSF9xctqHU+8A3j0wk8Qv6Gz573idXp7IQtmcQ5Ol7OBVS+ki13eJhrhIBYuGps0GGTR+tNXyJvSXqnRjB/DBYJbBvbSsMirzC9cOodQxO0NkBCduh/bsuDoHBIyMlHjJtEsTyLaf3DRdCWq6UqDe9AitoIbnusukM743aduJmJLjdyyPI6MudT+nrwZh1KkfSt7w72Pet2Trx5EUrdyjDswnRf44zHlKaEVBpLHMHG0K+lmq2m0VzWYgNdFqfZXaieDiREH5AaC4qBeJDt+D2qTnYFvACPcApk= mike@jenkins-server_
 
@@ -60,4 +60,6 @@ The build agent is the server that tackle the processing burden, it may be the j
         $sh fileName.sh
         #To run it contiuously
         $ ./fielname.sh
+
+- Storage driver on most Linux distribution is AUFS.
 

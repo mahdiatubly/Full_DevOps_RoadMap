@@ -48,8 +48,18 @@ _You can use any letter other than k to be the alias._
         # The specifications of the element
         spec:
                 containers:
-                        -name: nginx-container
-                        - image: nginx
+                        - name: nginx-container
+                          image: nginx
+                          ports:
+                                - containerPort: 5432
+                          # If the pod contains a DB service.
+                          env:
+                                - name: POSTGRES_USER
+                                  value: postgres
+                                - name: POSTGRES_PASSWORD
+                                  value: posgtgres
+
+
 ```
 
 Then run:
@@ -223,7 +233,7 @@ Then run `create -f` command as with other type of kurbenetes components.
 
 Then run `create -f` command as with other type of kurbenetes components.
 
-3- LoadBalancer: used to provide a single IP address to user where the app is deployed on multiple pods and each has different IP address. This service is not offered in all environements, it's just on some cloud services provided by some of the vendors like Google and AWS.To create a a LoadBalancer follwo the structure of the following file:
+3- LoadBalancer: used to provide a single IP address to user where the app is deployed on multiple pods and each has different IP address. This service is not offered in all environements, it's just on some cloud services provided by some of the vendors like Google and AWS (tacks the place of nodePort in those env.'s).To create a a LoadBalancer follwo the structure of the following file:
 
                 ```
                 apiVersion: v1
@@ -256,3 +266,5 @@ _To access a service you can use: curl IP:Port_
 
         # You can use delete, describe commands with services too!
         $ kubectl get services
+
+- Kubeadm is a tool used to set up multinode cluster easly.

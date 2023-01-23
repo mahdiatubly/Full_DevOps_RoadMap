@@ -8,6 +8,18 @@ If you want to know what containers are and why they are essential in the proces
 
 ## The Most Important Commands
 
+- To run Docker CLI on a server and the docker engine on another use the following command:
+
+        # docker -H=[IP Addr.]:2375 [the other command]
+        $ docker -H=123.2.3.4:2375 run nginx
+
+- Namespace system in linux is the responsible to make containers as separate spaces from the host OS and from each others. Cgroup is the resposible to manage resources of the server in a fair customizable way. You can set limit the container usage of the resouces as following:
+
+        $ docker run --cpus=.5 ubuntu
+        $ docker run --memory=.5 ubuntu
+
+- Docker saves data in `var/lib/docker`
+
 - To list all containers:
 
         $ docker ps
@@ -132,8 +144,13 @@ Then, run:
 
 - To make the data of the containers persistant:
 
-        # docker run -v [location on the server]: var/lib/mysql mysql
-        $ docker run -v Downlads/dataDirect: var/lib/mysql mysql
+        # First create a volume (optional):
+        $ docker volume create data_volume
+        # Then run: docker run -v [volume name or directory on the host]: [the default saving location in the container ex: var/lib/mysql] mysql
+        $ docker run -v data_volume: var/lib/mysql mysql
+        ## The modern way: docker run --mount type=bind [or volume],
+        source=[location on the host] target=[location on the container] mysql
+        $ docker run --mount type=bind, source=/home, target=var/lib/mysql mysql
 
 - To run an application that distributed through multiple containers, then you need to create a YAML file. YAML is a data format similar to JASON and XML,It will run all of the app services and link them to each other. Following is the structure of the YAML file:
 
@@ -143,6 +160,9 @@ Then, run:
                 image: [base image of the container] (if you did not create the the image you can just use instead of image {build: [the project path that contains the Dockerfile] )
                 ports:
                         - [#:#]
+                environement:
+                        POSTGRES_USER: postgres
+                        POSTGRES_PASSWORD: postgres
                 depends_on:
                         - [the name of the base container]
                 networks:
@@ -173,4 +193,19 @@ Then, run:
 
 - After creating the compose file in YAML format, run it through the following command (this will compose the app):
 
-        $docker-compose up
+        # You can add -d command to run containers in the deamon mode.
+        $ docker-compose up
+
+- Docker has 3 default networks:
+  1. Bridge Networks: it's an internal private network created by the docker host. Each container gets an IP address in the range of 127.17.0.0, containers can use these addresses to connect to each other. To access the containers externaly you have either to associate ports on containers to ports on the host docker or to use host network.
+  2. Host Network: is the network of the host, you can use it to run containers and then you do not need map ports but you can't have two containers running on the same port. To run a container on the host network:
+
+                $ docker run nginx --network=[host address]
+
+  3. None: The container hasn't any connection to any network
+
+- You can create your own custom network.
+- To add a tag to an image to push to local host:
+        
+        # docker tag SOURCE_IMAGE TARGET_IMAGE[:TAG]
+        $ docker image tag httpd:latest localhost:5000/httpd:latest
