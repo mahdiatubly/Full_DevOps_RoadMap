@@ -19,6 +19,11 @@
         $git remote add origin https://github.com/mahdiatubly/test.git
         $git push origin main
 
+- To create a new branch:
+
+        $git branch [the branch name]
+        $git branch [the branch name] [the commit that you want to start the branch with]
+
 - To merge a branch you have to be in the main branch, then:
 
         #git merge [the name of the branch that you want to merge]
