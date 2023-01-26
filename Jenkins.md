@@ -54,6 +54,8 @@ The build agent is the server that tackle the processing burden, it may be the j
 - To get info about the OS that you are using through bash shell you can use the following command:
 
         $cat /etc/os-release
+        # Or with wildcards
+        $cat /etc/*release*
 
 - To run a file with .sh extention:
 
@@ -61,5 +63,122 @@ The build agent is the server that tackle the processing burden, it may be the j
         #To run it contiuously
         $ ./fielname.sh
 
-- Storage driver on most Linux distribution is AUFS.
+- To create nested folders in one command:
 
+        $ mkdir -p folder1/../..
+
+- To get info about the user:
+
+        $ id
+
+- To switch the user on the host:
+
+        $ su [the user want to switch to]
+
+- To start a service on the host:
+
+        # systemctl start [service name]
+        $ systemctl start httpd
+        # To stop the service
+        $ systemctl stop httpd
+        # to get the status
+        $ systemctl status httpd
+        # To configure a service to run whenever the host bootup
+        $ systemctl enable httpd
+        # To disable a service
+        $ systemctl disable httpd
+
+- To create a service for an app then go to `etc/systemd/system`, then create a file (.service) with name of the app them fill the file with running instruction in the following structure:
+
+        [Unit]
+        Descreption=Running watermelon program
+
+        [Service]
+        ExecStart= The running commands
+        ExecStartPre=  running needed dependencies
+        ExecStartPost=
+
+        # To restart the app whenever it fails
+        Restat= always
+
+        # To enable running whenever the system bootup,
+        # and make using enable command possible
+        [Install]
+        WantedBy= multi-user.target
+
+Then, run the following command and the service will be ready to start:
+
+        $systemctl daemon-reload
+
+- To copy a directory from a place to another, use the following command:
+
+        $cp -r [directory name] [intended location path]
+
+- To get the structure of the file as a tree:
+
+                $cd [folder path]; tree
+
+- To get the location of a pakage:
+
+                # [] => Example
+                $[pip] show [flask]
+                # The more useful command
+                $[python3] -c "import sys; print(sys.path)"
+
+- To get the network interfaces on the host:
+
+        $ip link
+
+- To get the addresses assigned to all interfaces:
+
+        $ip addr
+        # To set an IP address on an interface
+        $ ip addr add [IP addresss] [interface]
+
+- To get the routing table on your host:
+
+        $ip route
+        # To add entries to the routing table
+        $ip route add [IP] dev [inerface]
+
+- To check if forwarding requests is enabled on your device or not(works as router) if the value is 1 means forwards and 0 is the opposite:
+
+        $cat proc/sys/net/ipv4/ip_forward
+
+- To add an entry to the local DNS on you host add the IP and the name of the other host into `etc/hosts` => 192.0.0.1 db
+
+- To get the DNS server that your host connected to:
+
+        $cat etc/resolv.config
+        # You can add more name servers and to make searching about easier for
+        some websites add: [search  [the domain name]] => now the top DN will
+        take you to this site.
+
+- The computer at first stage looks at the local DN file then to the DNS, to change this precedence update `etc/nsswitch.config`
+
+- To compile java code and create the .class files run the following command:
+
+                $javac [source code file name (.java)]
+
+- To run java program run:
+
+                $java [class name without any extensions]
+
+- JAR (java archive) file contains multiple compressed java files. Creating a jar file implicate creating a manifest file that contains info about where the program start running. To create a jar file use the following command:
+
+                $jar [Names of the files included in the jar just space between them]
+                # To run JAR files:
+                $ java -jar [the jar file]
+
+- Use javadoc to format your app docs:
+
+                $javadoc -d doc [file name]
+
+- WAR (web archive) contains java files and static files as HTML and CSS.
+- Storage driver on most Linux distribution is AUFS.
+- To install all packages of a python program, write them in a txt file then run the following command:
+
+                $pip install -r [requirements.txt]
+
+- Python has pakages other than pip like 'easy_install' ans 'wheels'
+- To query data from jason or yaml file you can use what called jasonPath, to see the syntax of jasonPath visit the following page: `https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html`

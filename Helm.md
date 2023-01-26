@@ -15,7 +15,7 @@
 
         $ helm create [the name of the chart]
 
-- To make the templates flexible you have to use go templating lanuage to define the the name of the template to make it avialable to use by any number of releases. The go template define as following:
+- To make the templates flexible you have to use go templating lanuage to define the name of the template to make it avialable to use by any number of releases. The go template defined as following:
 
         {{.Rlease.Name}}-nginx
         ### Notice that there are a lot of other variable that you can set their values
@@ -41,14 +41,26 @@
             tier: {{title}}
         {{- end}}
 
-- If there is variable in the values file is a list then you have to iterate on its elements in the template files whenever you want to use these values:
+- If there is a variable in the values file assign to a list then you have to iterate on its elements in the template files whenever you want to use these values:
 
         cars:
         {{- range values.carList}}
         - {{ . | quote}}
         {{- end}}
 
-- To reduce the repetetion in the templates you can use helper files. Helper files
+- To reduce the repetetion in the templates you can use helper files. Helper files name has to start with _ to notify helm to do not try to create a manifest for this file where it's just a helper file and does not follow the legal structure in helm. The structure of the helper file is as following:
+
+          {{- define "labels[any title]"}}
+              the repetetive part
+          {{- end}}
+
+  To call the part in the template file:
+
+          {{- template "labels" . }}
+
+If the indentation in the template is more than that in the helper file then you have to use "include" instead of "template" to be able to pipe it to indent function:
+
+        {{- include "labels" . | indent 4 }}
 
 - To test the format of the chart and show the format errors if exist:
 
@@ -73,7 +85,7 @@
         ## You can update any value in the Values.yaml file using --set flag
         $ helm install --set [variable name]="value" --set [variable 2]="value 2" [release name] [the name of the chart]
 
-- To apdate the values in the Values.yaml file using a custom values file:
+- To update the values in the Values.yaml file using a custom values file:
 
         $ helm install --values custom=file.yaml [release name] [the name of the chart]
 
@@ -109,3 +121,46 @@
 - To return back to an older version:
 
         $ helm rollback [release name] [the revision number]
+
+- Chart hooks is processes that run before or after applying the upgrade, start, delete, or rollback the release. Hooks called either pre-process or post-process like preupgrade and postupgrade. Hooks write as scripts (.sh) and run once on the cluster. While pods runs contiuously then we have to run them as jobs. Defining a job is in a YAML file that put in the template folder. The structure of the job file is as following:
+
+        apiVersion: batch/v1
+        kind: Job
+        metadata:
+            name: pi
+            annotations:
+                # To define the type of hook
+                "helm.sh/hook": pre-upgrade
+                # To ordre the run of hooks 1 start then 2,3,...
+                "helm.sh/hook-weight": "5"
+                # If you want to delete the hook next to running it
+                "helm.sh/hook-delete-policy": hook-succeeded
+                [or faile (if you want to delete the hook even in fail running state)]
+        spec:
+        template:
+            spec:
+            containers:
+            - name: pi
+                image: perl:5.34.0
+                command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+            restartPolicy: Never
+        backoffLimit: 4
+
+- To upload the charts to the Online Chart Repository, you need to package the chart. However, before that you need to sign the chart to prevent any chang e in the chart. To sign the chart folder:
+
+        # 1. generate the pb and pv keys
+        $ gpg --full-generate-key "Essa Mousa"
+        # 2. export the key
+        $ gpg export--secret-keys >~ .gnupg/securing.gpg
+        # 3. package the chart folder:
+        $ helm package --sign --key "Essa Mousa" --keyring ~/.gnupg/securing.gpg ./nginx-chart
+        # 4. To export the charts you need .prov and .tgz and index.yaml 
+        # 5. Create index.yaml file sing a folder contains.tgz&prov folders
+        $ helm repo index [project folder] --url http//:thePathOfTheRepo
+        
+-To install the chart:
+
+        # Add the repo to your local helm repo list
+        $ helm repo add [name] [url]
+        # To verify the the package run the following add --verify to the instal statement
+        $ helm install --verify [chart file name]

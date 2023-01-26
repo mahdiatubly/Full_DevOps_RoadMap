@@ -2,6 +2,14 @@
 
 ## Some tricky commands
 
+- To see the changes in a file:
+
+        $git diff [file name]
+
+- To add just a part of the changes in a file to the staging are:
+
+        $git add -p [file name]
+
 - To discover the branches that the current branch is istantiated from:
 
         $git log --graph --decorate
@@ -16,7 +24,7 @@
         #git merge [the name of the branch that you want to merge]
         $git merge authentication
 
-- To get the updates in the repo:
+- To get the updates in the remote repo:
 
         # May be the main branch called master in some github accounts.
         $git pull origin main
@@ -37,7 +45,7 @@
         #The current branch will be on top of main branch
         $git rebase main
 
-- To get a specific commit from main branch:
+- To get a specific in a branch, first go to the branch that you want to transfer the commmit to it, then run the following command:
 
         $git cherry-pick 0953213565.....[the required commit SHA]
 

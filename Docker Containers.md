@@ -46,7 +46,7 @@ _You can pipe the result to wc -l command to get the number of images or contain
         # If you don't want to download the image you can just pull the image
         $ docker pull nginx
 
-- To add an env. var. ito code:
+- To add an env. var. to code:
 
                 >> x = os.environ.get(X)
                 => then in docker
@@ -197,15 +197,15 @@ Then, run:
         $ docker-compose up
 
 - Docker has 3 default networks:
-  1. Bridge Networks: it's an internal private network created by the docker host. Each container gets an IP address in the range of 127.17.0.0, containers can use these addresses to connect to each other. To access the containers externaly you have either to associate ports on containers to ports on the host docker or to use host network.
-  2. Host Network: is the network of the host, you can use it to run containers and then you do not need map ports but you can't have two containers running on the same port. To run a container on the host network:
+
+  1.  Bridge Networks: it's an internal private network created by the docker host. Each container gets an IP address in the range of 127.17.0.0, containers can use these addresses to connect to each other. To access the containers externaly you have either to associate ports on containers to ports on the host docker or to use host network.
+  2.  Host Network: is the network of the host, you can use it to run containers and then you do not need map ports but you can't have two containers running on the same port. To run a container on the host network:
 
                 $ docker run nginx --network=[host address]
 
-  3. None: The container hasn't any connection to any network
+  3.  None: The container hasn't any connection to any network
 
 - You can create your own custom network.
 - To add a tag to an image to push to local host:
-        
         # docker tag SOURCE_IMAGE TARGET_IMAGE[:TAG]
         $ docker image tag httpd:latest localhost:5000/httpd:latest
