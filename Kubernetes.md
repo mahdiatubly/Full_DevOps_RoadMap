@@ -268,3 +268,6 @@ _To access a service you can use: curl IP:Port_
         $ kubectl get services
 
 - Kubeadm is a tool used to set up multinode cluster easly.
+- To get the logs of a pod:
+
+        $kubectl logs [pod name]

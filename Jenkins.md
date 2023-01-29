@@ -56,6 +56,8 @@ The build agent is the server that tackle the processing burden, it may be the j
         $cat /etc/os-release
         # Or with wildcards
         $cat /etc/*release*
+        # To check the OS kernel
+        $uname -r
 
 - To run a file with .sh extention:
 
