@@ -1,0 +1,37 @@
+# Linux
+
+- User space sends system calls to the kernel space to get access to the hardware resources.
+- To get the OS kernel:
+
+        $uname -r
+
+- To get the kernel messages:
+
+        $dmesg
+
+- To get the recieved events run the following:
+
+        $udevadm monitor
+
+- To get all the prephiral components interconnect:
+
+        $lspci
+
+- To get all the block devices in the pc:
+
+        $lsblk
+
+- To get all the details about the computer CPU:
+
+        $lscpu
+
+- To get all the details about the computer memory:
+
+        # You can add --summary to get the summary.
+        $lsmem
+        # Also you can use
+        $free -m
+
+- To get the entire hardware config:
+
+        $lshw

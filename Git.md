@@ -45,6 +45,10 @@
 
         $git log [first branch] [the other branch]
 
+- To delete a branch in the repo:
+
+        $git branch --delete [branch name]
+
 - To delete a branch in the remote repo:
 
         $git push --delete [branch name]
@@ -138,3 +142,8 @@
 - To update the commit message of the last commit:
 
         $git commit --ammend -m "The new commit message"
+
+- To fix an old commit:
+
+        $git commit --fixup [commit SHA]
+        $git rebase -i HEAD~[old commit SHA] --autosquash
