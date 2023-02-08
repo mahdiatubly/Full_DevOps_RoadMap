@@ -68,6 +68,14 @@ Also, when you try to create a component using yaml files then you have to add a
 - To get all the pods in a specific namespace (for example the namespace is kub-system):
 
         $ kubectl get pods --namespace=kub-system
+        
+- To get pods in all name spaces:
+
+        # kubectl get pods --all-namespaces
+        
+- To create a new namespace:
+
+        $ kubectl create ns [name]
 
 - To create a new pod (in the default namespace):
 
