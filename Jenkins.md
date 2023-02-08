@@ -94,6 +94,7 @@ The build agent is the server that tackle the processing burden, it may be the j
 
         [Unit]
         Descreption=Running watermelon program
+        After=postgres.service
 
         [Service]
         ExecStart= The running commands
@@ -111,6 +112,14 @@ The build agent is the server that tackle the processing burden, it may be the j
 Then, run the following command and the service will be ready to start:
 
         $systemctl daemon-reload
+
+- To get the logs of a service:
+
+        $journalctl
+        # Logs of current boot
+        $journalctl -b
+        # Logs of a specific sertvice
+        $journalctl -u [service name]
 
 - To copy a directory from a place to another, use the following command:
 

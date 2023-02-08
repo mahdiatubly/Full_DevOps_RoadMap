@@ -2,17 +2,59 @@
 
 ### The Most Common Commands
 
+- In the master node & worker node components:
+
+        Master
+        - etcd cluster (strores info about everything about pods ...)
+        - kube controller manager (controller is a process that continuously monitors the state of various components within the system)
+        - kube-scheduler (is only responsible for deciding which pod goes on which node. It doesn’t actually place the pod on the nodes.)
+        - kube-apiserver (primary management component)
+
+        Worker
+        - kublete (You must always manually install the kubelet on your worker nodes. its doesn't auto with kubeadm)
+        - kube-proxy (is a process that runs on each node in the kubernetes cluster.Its job is to look for new services and every time a new service is created it creates the appropriate rules on each node to forward traffic to those services)
+
+- Etcd is a strongly consistent, distributed key-value store that provides a reliable way to store data that needs to be accessed by a distributed system or cluster of machines. It gracefully handles leader elections during network partitions and can tolerate machine failure, even in the leader node.
+
+- If you use kubeadm then etcd server will be a pod in the system namespace, otherwise you have to downloaded and set it on the cluster.
+
+- To run etcd service (on port 2379 as a default) run the follwing aommand:
+
+        $etcd
+        # To add a value to ectd
+        $etcdctl put [key1] [value1]
+        # to get stored data
+        $etcdctl get [key1]
+
+- To use the lastest release of etcd api run the following command:
+
+        ETCDCTL_API=3 ./etcd version
+
 _To make your life easier while running these commands you can create an alias to the kubectl command:_
 
         $ alias k="kubectl"
 
 _You can use any letter other than k to be the alias._
 
+*Also namespace==ns & service==svc*
+
 - To get all the nodes in the cluster:
 
         $ kubectl get nodes
         # For more details
         $ kubectl get nodes -o wide
+
+- As a default pods and all the other components are created in the default namespace. However if you are looking to create a separate space with other authority levels and defined rnge of the resources then you have to create a new namespace. If you want to get pods or do any thing the new namespace then use the following:
+
+        $ kubectl get pods --namespace=[name]
+        # To switch to the new space
+        $ kubectl config set-context $(kubectl config current-context) --namespace=[name]
+        # To get pods in all namespaces
+        $ kubectl get pods --all-namespaces
+
+Also, when you try to create a component using yaml files then you have to add a namespace attribute in the metadeta field.
+
+- To limit the access of a namespace to resources use ResourceQuota; it's created using YAML files as any other component.
 
 - To get all the namespaces in the cluster:
 
@@ -21,6 +63,7 @@ _You can use any letter other than k to be the alias._
 - To get all the pods in the default namespace:
 
         $ kubectl get pods
+        $ kubectl get pods -o wide
 
 - To get all the pods in a specific namespace (for example the namespace is kub-system):
 
@@ -29,7 +72,7 @@ _You can use any letter other than k to be the alias._
 - To create a new pod (in the default namespace):
 
         # You can add --dry-run -o yaml to console log the yaml file that will create the pod. You can add > filename.yaml to save the output in the file.
-        # kubectl run [pod name] --image=[image name] --dry-run -o
+        # kubectl run [pod name] --image=[image name] --dry-run=client -o yaml > [filename]
         $ kubectl run nginx --image=nginx
 
 - To create a pod using YAML file:
