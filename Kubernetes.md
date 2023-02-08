@@ -302,6 +302,8 @@ Then run `create -f` command as with other type of kurbenetes components.
 
         # kubectl expose deployment [deployment name] --port=[the external IP] --target=[port inside the container]
         $ kubectl expose deployment nginx-deployment --port=8080 --target-port=80
+        # To create the sevice to a pod
+        $ kubectl expose pod [redis] --port=6379 --name [redis-service]
 
 _To access a service you can use: curl IP:Port_
 
