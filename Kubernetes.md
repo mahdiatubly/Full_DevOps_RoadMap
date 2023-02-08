@@ -82,6 +82,8 @@ Also, when you try to create a component using yaml files then you have to add a
         # You can add --dry-run -o yaml to console log the yaml file that will create the pod. You can add > filename.yaml to save the output in the file.
         # kubectl run [pod name] --image=[image name] --dry-run=client -o yaml > [filename]
         $ kubectl run nginx --image=nginx
+        # To add a label to the pod
+        $ kubectl run [pod name] --image=[image name] --labels="app=love"
 
 - To create a pod using YAML file:
 
