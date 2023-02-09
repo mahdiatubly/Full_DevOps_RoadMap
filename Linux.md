@@ -170,4 +170,7 @@
 
 - Logical volume Manager (LVM): it is created of a group of phyical volumes. LVM give the ability to build logical volumes that made of the mixture of all of the physical volumes.
 
+- sed is comand used to replace text in a file or group of files:
 
+        # To exchange "hate" with "love" in a file
+        $sed 's/hate/love' [filename]
