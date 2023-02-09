@@ -172,5 +172,15 @@
 
 - sed is comand used to replace text in a file or group of files:
 
-        # To exchange "hate" with "love" in a file
-        $sed 's/hate/love' [filename]
+        # To exchange "hate" with "love" in a file, Add -i to update the file with the changes
+        # You can use any delimeter other than '/' 
+        $sed -i 's/hate/love' [filename]
+        $sed 's/^hate/love' [filename] > [new file]
+- awk is also a tool used to grap specific part of data nd updating files (it uses spaces as a delimeter):
+
+        # To show the first word of each line in a file
+        $awk '{print $1}'
+        # To get last field in a file 
+        $awk '{pint $NF}'
+        # To change the delimeter of awk ust -F flag
+        $awk -F':' '{print $1, $NF}'
