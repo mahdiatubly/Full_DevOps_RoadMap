@@ -271,4 +271,10 @@ an attacker or malware gains access to a network or system.
 -  Attack Surface is the sum of all the different attack vectors in a given system.
 Think of this as the combination of
 all possible ways an attacker could interact with our system,
-regardless of known vulnerabilities. 
+regardless of known vulnerabilities.
+
+- Bastion host is a dedicated server that lets authorized users access a private network from an external network such as the internet. Placed outside the firewall or within a DMZ, the bastion host becomes the only ingress path to those internal resources. Access control becomes easier to manage while minimizing the potential attack surface.
+
+- Security information and event management systems (SIEMS): can be thought of as a centralized log server for security administration purposes. It has some extra analysis features too. A SIEM system gets logs from a bunch of other systems. It consolidates the logs from all different places and places it in one centralized location. Some examples of logging servers and SIEMS solutions are the open source rsylog, Splunk Enterprise Security, IBM Security Qradar, and RSA Security analytics.
+
+- Microsoft 365 Defender can help to provide enterprise-wide security through an integrated suite of tools. It offers tools to prevent attacks, detect threats, investigate security breaches, and coordinate effective response strategies.
