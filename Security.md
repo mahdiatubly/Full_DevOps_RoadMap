@@ -298,3 +298,9 @@ regardless of known vulnerabilities.
 - There are lots of open source and commercial solutions that you can use fot vulnerability scanning. They can be configured to perform scheduled, automated scans of designated systems or networks to look for vulnerabilities. Then they generate a report. Some of these tools are Nessus, OpenVas and Qualys.
 
 - The recoverability is how complicated and time-consuming the recovery effort will be.
+
+- Digital Rights Management (DRM) technologies can help ensure data regulations compliance. DRM capabilities to protect sensitive data. DRM enables organizations to track who has viewed files, control access, and manage how people use the files. It also prevents files from being altered, duplicated, saved, or printed. 
+
+- End User Licensing Agreements (EULAs) are similar to DRM in specifying certain rights and restrictions that apply to the software. You often encounter EULA statements when installing a software package, accessing a website, sharing a file, or downloading content. A EULA is usually considered a legally binding agreement between the owner of a product (e.g., a software publisher) and the product's end-user. Unlike DRM restrictions, EULAs are only valid if you agree to it (i.e., you check a box or click the ‘I Agree’ button). DRM restrictions don’t require your agreement—or rely on you to keep that agreement. DRMs are built into the product they protect, making it easier for content creators to ensure users do not violate restrictions.
+
+- Jailbreaking happens when a manufacturer’s protective restrictions are removed on a mobile device. Without these restrictions, a device becomes vulnerable to the risk of the user unknowingly installing malicious software.
