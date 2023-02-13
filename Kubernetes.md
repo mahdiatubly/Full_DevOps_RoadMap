@@ -326,3 +326,17 @@ _To access a service you can use: curl IP:Port_
 - To get the logs of a pod:
 
         $kubectl logs [pod name]
+        
+- To restrict he pods that can run on a node thent ou have to add a Tain to the node and give a tolerance to the pods that can run on it:
+
+        $kubectl taint nodes [node name] [key]=[value]: [one of theses values: NoSchedual | PreferNoSchedual | NoExecute (most restrict)]
+        # To untaint the node add - to the end of he previous statement
+        
+- To add taint to the YAML file of a pod: 
+
+        spec:
+                tolerations:
+                - key: "app"
+                  operator: "Equal"
+                  value: "blue"
+                  effect: NoSchedual
