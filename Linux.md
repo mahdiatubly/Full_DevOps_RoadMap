@@ -184,3 +184,9 @@
         $awk '{pint $NF}'
         # To change the delimeter of awk ust -F flag
         $awk -F':' '{print $1, $NF}'
+        
+- To count the number of outputs: 
+
+        $ ..... --no-headers | wc -l
+        
+
