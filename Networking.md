@@ -62,8 +62,10 @@
 
 - If ping probes are unsuccessful, one of two messages are commonly received:
 
-        - Destination host unreachable-There is no routing information (that is, the local computer does not know how to get to that IP address).
-          This might be caused by some sort of configuration error on the local host, such as an incorrect default gateway, by a loss of connectivity with a router,
+        - Destination host unreachable-There is no routing information (that is, the local computer does not
+          know how to get to that IP address). This might be caused by some sort of configuration error on the
+          local host, such as an incorrect default gateway, by a loss of connectivity with a router,
           or by a routing configuration error.
-        - No reply (Request timed out.)-The host is unavailable or cannot route a reply to your computer. Requests time out when the TTL is reduced to 0 
-          because the packet is looping (because of a corrupted routing table), when congestion causes delays, or when a host does not respond.
+        - No reply (Request timed out.)-The host is unavailable or cannot route a reply to your computer. Requests time out when the TTL is 
+          reduced to 0 because the packet is looping (because of a corrupted routing table), when congestion causes delays, or when a host
+          does not respond.
