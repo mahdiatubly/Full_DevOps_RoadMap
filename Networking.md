@@ -36,9 +36,11 @@
 - Anycast: Group of hosts with same IP, closest will be chosen.
 - 0.0.0.0/8: commonly used by clients to request DHCP lease
 - Nmap ("network mapper") is a very common and useful utility for discovering nodes on the network and scaning that node to discover open ports:
+
   $nmap [IP address]
+  
 - The Hypertext Transfer Protocol (HTTP) does not encrypt network traffic or confirm the identity of the destination web server, hence the importance of HTTPS connectivity for secure web browsing.
-- Ping uses ICMP, which does not operate at the Transport layer (where port numbers exist).
+- Ping uses ICMP(layer 3), which does not operate at the Transport layer (where port numbers exist).
 - In Windows to change the IP of a host statically:
 
         $netsh interface ip set address "Ethernet" static 10.1.254.2 255.255.255.0 10.1.254.254
