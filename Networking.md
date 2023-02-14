@@ -51,7 +51,9 @@
 
 - Ping the IP address of the local host to verify it was added correctly and to verify that the network adapter is functioning properly. If you cannot ping your own address, there might have been a configuration error, or the network adapter or adapter driver could be faulty.
 
-- To show ARP cache contents. 
+- To show ARP cache contents.
+
+
         $arp -a (or arp -g )
         # Adds an entry to the ARP cache.
         $arp -s IPAddress MACAddress
@@ -60,7 +62,7 @@
         
 - In Linux, the ip neigh command shows entries in the local ARP cache (replacing the old arp command).
 
-- If ping probes are unsuccessful, one of two messages are commonly received:
+- If ping probes are unsuccessful, one of two messages are commonly received (add -c to send a specific number of ping packets):
 
         - Destination host unreachable-There is no routing information (that is, the local computer does not
           know how to get to that IP address). This might be caused by some sort of configuration error on the
@@ -69,3 +71,9 @@
         - No reply (Request timed out.)-The host is unavailable or cannot route a reply to your computer. Requests
           time out when the TTL is reduced to 0 because the packet is looping (because of a corrupted routing table),
           when congestion causes delays, or when a host does not respond.
+          
+- If Windows detects a duplicate IP address, it will display a warning and disable IP. Linux does not typically check for duplicate IP addresses. If there are two systems with duplicate IPs, a sort of race condition will determine which receives traffic.
+
+-  On Linux, you can use the arping tool `arping -D` to report duplicate replies.
+
+- To diagnose MAC address issues, use the arp utility to verify the MAC addresses recorded for each host and ipconfig or ip neigh to check the MAC address assigned to the interface. Also check the MAC address and ARP tables on any switches and routers involved in the communications path. You can use a protocol analyzer to examine ARP traffic and identify which IP hosts are attempting to claim the same MAC address.
