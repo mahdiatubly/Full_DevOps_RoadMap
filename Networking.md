@@ -9,7 +9,7 @@
         $ip add
         # To reports interface statistics
         $ip -s link
-        # To enable or disable an interface
+        # To enable or disable an interface (These changes are not persistent and apply only to the running configuration, unless run as part of a startup script)
         $ip link set [inteface name] [up OR down]
         # To modify IP address config
         $ip [add OR delete]
@@ -48,3 +48,22 @@
 - A router to reach a 10.1.16.0/16 subnet from a 10.1.254.0/24 subnet, but it cannot reach the router configured as its default gateway (unsurprisingly, as it doesn't exist). This can produce a mix of Request timed out errors (because ARP cannot identify the default gateway) and Destination unreachable errors (because there is no other route in the local routing table)
 
 - Applying inconsistent subnet masks may or may not break communications between hosts and can sometimes be difficult to identify. Hosts in the same subnet should be configured with the same mask, ideally from an autoconfiguration service such as DHCP.
+
+- Ping the IP address of the local host to verify it was added correctly and to verify that the network adapter is functioning properly. If you cannot ping your own address, there might have been a configuration error, or the network adapter or adapter driver could be faulty.
+
+- To show ARP cache contents. 
+        $arp -a (or arp -g )
+        # Adds an entry to the ARP cache.
+        $arp -s IPAddress MACAddress
+        # To delete all entries in the ARP cache
+        $arp -d *
+        
+- In Linux, the ip neigh command shows entries in the local ARP cache (replacing the old arp command).
+
+- If ping probes are unsuccessful, one of two messages are commonly received:
+
+        - Destination host unreachable-There is no routing information (that is, the local computer does not know how to get to that IP address).
+          This might be caused by some sort of configuration error on the local host, such as an incorrect default gateway, by a loss of connectivity with a router,
+          or by a routing configuration error.
+        - No reply (Request timed out.)-The host is unavailable or cannot route a reply to your computer. Requests time out when the TTL is reduced to 0 
+          because the packet is looping (because of a corrupted routing table), when congestion causes delays, or when a host does not respond.
