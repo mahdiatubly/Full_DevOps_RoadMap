@@ -340,3 +340,29 @@ _To access a service you can use: curl IP:Port_
                   operator: "Equal"
                   value: "blue"
                   effect: NoSchedual
+
+- To label a node use the following command:
+
+        $kubectl label nodes [node name] [key]=[value]
+        
+- To select a specific node for a pod; add the following section to the pod definition file:
+
+        spec:
+                ...
+                nodeSelector:
+                        size:large
+  
+- The primary purpose of node affinity feature is to ensure that pods are hosted on particular nodes. Affinity provides more flexibility on the chosen node. To select a range of nodes to run the pod:
+
+        spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: disktype
+                    operator: In
+                    values:
+                    - ssd
+
+- 
