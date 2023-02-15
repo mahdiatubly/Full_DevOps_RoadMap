@@ -365,4 +365,17 @@ _To access a service you can use: curl IP:Port_
                     values:
                     - ssd
 
+- You can ceate default limit range for pods resource by creating  a limi trange file
+
+        apiVersion: v1
+        kind: LimitRange
+        metadata:
+          name: mem-limit-range
+        spec:
+          limits:
+          - default:
+              memory: 512Mi
+            defaultRequest:
+              memory: 256Mi
+            type: Container
 
