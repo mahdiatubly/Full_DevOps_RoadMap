@@ -101,3 +101,5 @@
 -  Generic Routing Encapsulation (GRE). GRE allows a wide variety of Network layer protocols to be encapsulated inside virtual point-to-point links. This protocol has the advantage that because it was originally designed for IPv4, it is considered a mature mechanism and can carry both v4 and v6 packets over an IPv4 network.
 
 - Service (srv) records are essential for clients to be able to join a domain and authenticate with Active Directory.
+
+-  Note that the switches do not count as hops
