@@ -379,3 +379,4 @@ _To access a service you can use: curl IP:Port_
               memory: 256Mi
             type: Container
 
+- Daemon set are like replica sets, as in it helps you deploy multiple instances of pod. But it runs one copy of your pod on each node in your cluster. Whenever a new node is added to the cluster a replica of the pod is automatically added to that node, it is the perfect choice to apply a monitoring agent on nodes. Creating a DaemonSet is similar to create a replicaset, the only difference is the kind.
