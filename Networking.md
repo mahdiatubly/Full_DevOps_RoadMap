@@ -103,3 +103,9 @@
 - Service (srv) records are essential for clients to be able to join a domain and authenticate with Active Directory.
 
 -  Note that the switches do not count as hops
+
+- Distance vector: Algorithm used by routing protocols that select a forwarding path based on the next hop router with the lowest hop count to the destination network.
+
+-  Link state: Algorithm used by routing protocols that build a complete network topology to use to select optimum forwarding paths.
+
+- Dynamic Routing: Entry in the routing table that has been learned from another router via a dynamic routing protocol.
