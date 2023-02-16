@@ -131,3 +131,7 @@
 -  Border Gateway Protocol (BGP) is designed to be used between routing domains in a mesh internetwork and as such is used as the routing protocol on the Internet, primarily between ISPs.
 
 - Autonomous system numbers (ASN) are allocated to ISPs by IANA via the various regional registries. When BGP is used within an AS, it is referred to as Interior BGP (IBGP), and when implemented between autonomous systems, it is referred to as Exterior BGP (EBGP). BGP works with classless network prefixes called Network Layer Reachability Information (NLRI). BGP works over TCP on port 179.
+
+-  Administrative distance (AD): Metric determining the trustworthiness of routes derived from different routing protocols. Routers prefer the learned route because it has a lower AD.
+
+-  Variable length subnet masking (VLSM): Using network prefixes of different lengths within an IP network to create subnets of different sizes. Without VLSM, you have to allocate subnetted ranges of addresses that are the same size and use the same subnet mask throughout the network. VLSM allows different length netmasks to be used within the same IP network, allowing more flexibility in the design process.
