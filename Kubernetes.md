@@ -382,3 +382,13 @@ _To access a service you can use: curl IP:Port_
 - Daemon set are like replica sets, as in it helps you deploy multiple instances of pod. But it runs one copy of your pod on each node in your cluster. Whenever a new node is added to the cluster a replica of the pod is automatically added to that node, it is the perfect choice to apply a monitoring agent on nodes. Creating a DaemonSet is similar to create a replicaset, the only difference is the kind.
 
 - Static pod: creating a pod without te precense of master node and its component, just using kubelet. In the definition of static pods ypu'll get the owner as node instead of replicaset. Also, you will get the name of the ode added to the end of the pod name (podName-nodeName). Notce that you can not update static pods or delete them using kubectl commands instead you need to get inside the node an d delete thier definitions files.
+
+- To delete a static pod:
+
+        1. Connect to its node using ssh
+        2. Go to /var/lib/kbernetes/config.yaml
+        3. Take the static pod path
+        4. use the path to delete the file
+        5. use get po --watch to see how its die, it deserves to die!
+
+
