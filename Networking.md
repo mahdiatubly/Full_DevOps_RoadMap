@@ -135,3 +135,20 @@
 -  Administrative distance (AD): Metric determining the trustworthiness of routes derived from different routing protocols. Routers prefer the learned route because it has a lower AD.
 
 -  Variable length subnet masking (VLSM): Using network prefixes of different lengths within an IP network to create subnets of different sizes. Without VLSM, you have to allocate subnetted ranges of addresses that are the same size and use the same subnet mask throughout the network. VLSM allows different length netmasks to be used within the same IP network, allowing more flexibility in the design process.
+
+- Routers serve both to link physically remote networks and subdivide autonomous IP networks into multiple subnets. Router placement is primarily driven by the IP networks and subnets that have been created; Hosts with addresses in the same subnet or IP network must not be separated by a router.
+Conversely, hosts with addresses in different subnets or IP networks must be separated by a router. Edge routers designed to work with DSL or cable broadband access methods are called small office/home office (SOHO) routers.
+
+- An internal router has no public interfaces.
+
+- Configuring a router's physical interface with multiple virtual interfaces connected to separate virtual LAN (VLAN) IDs over a trunk.
+
+- Layer 3 capable switch: Switch appliance capable of IP routing between virtual LAN (VLAN) subnets using hardware-optimized path selection and forwarding.
+
+-  SSH can be used to communicate with the router via the IP address of any configured interface.
+
+- The route command is used to view and modify the routing table of end system Windows and Linux hosts. A nonpersistent route can be added using the following general syntax:
+
+        $route add -net 192.168.3.0 netmask 255.255.255.0 metric 2 dev eth0
+        
+**The output shows the number of hops, the IP address of the ingress interface of the router or host (that is, the interface from which the router receives the probe), and the time taken to respond to each probe in milliseconds (ms). If no acknowledgment is received within the timeout period, an asterisk is shown against the probe. Note that while this could indicate that the router interface is not responding, it could also be that the router is configured to drop packets with expired TTLs silently.**
