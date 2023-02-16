@@ -151,4 +151,10 @@ Conversely, hosts with addresses in different subnets or IP networks must be sep
 
         $route add -net 192.168.3.0 netmask 255.255.255.0 metric 2 dev eth0
         
-**The output shows the number of hops, the IP address of the ingress interface of the router or host (that is, the interface from which the router receives the probe), and the time taken to respond to each probe in milliseconds (ms). If no acknowledgment is received within the timeout period, an asterisk is shown against the probe. Note that while this could indicate that the router interface is not responding, it could also be that the router is configured to drop packets with expired TTLs silently.**
+**The output shows the number of hops, the IP address of the ingress interface of the router or host (that is, the interface from which the router receives the probe), and the time taken to respond to each probe in milliseconds (ms). If no acknowledgment is received within the timeout period, an asterisk is shown against the probe. Note that while this could indicate that the router interface is not responding, it could also be that the router is configured to drop packets with expired TTLs silently.** traceroute can be configured to send ICMP Echo Request probes rather than UDP by using `traceroute -I` . The `traceroute -6` or `traceroute6` commands are used for IPv6 networks. On a Windows system, the same function is performed using the tracert command. `tracert` uses ICMP Echo Request probes by default. You can use the -d switch to suppress name resolution, -h to specify the maximum number of hops (the default is 30), and -w to specify a timeout in ms (the default is 4000).
+
+- If you suspect a problem with router configuration and the network topology, use traceroute to try to identify where the network path is failing and the route or show route commands to investigate the routing tables of intermediate systems at that point in the path.
+
+- missing route: Troubleshooting issue where a routing table does not contain a required entry due either to manual misconfiguration or failure of a dynamic routing protocol update.
+
+-
