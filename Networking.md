@@ -158,4 +158,6 @@ Conversely, hosts with addresses in different subnets or IP networks must be sep
 
 - missing route: Troubleshooting issue where a routing table does not contain a required entry due either to manual misconfiguration or failure of a dynamic routing protocol update.
 
--
+- A routing loop occurs when two routers use one another as the path to a network. Packets caught in a routing loop circle around until the TTL expires. One symptom of a potential routing loop is for routers to generate ICMP Time Exceeded error messages.You can use traceroute to diagnose a routing loop by looking for IP addresses that appear multiple times in the output.
+
+- Asymmetrical routing Topology where the return path is different to the forward path, Asymmetric routing is problematic where the return path is much higher latency than the forward path or where the difference between the paths causes stateful firewall or network address translation (NAT) devices to filter or drop communications. You should use traceroute from both sender and receiver to compare the per-hop latency to identify where the routing topology is misconfigured.
