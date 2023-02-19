@@ -173,3 +173,5 @@ Conversely, hosts with addresses in different subnets or IP networks must be sep
 - Bus topology: a shared access media where all nodes attach directly to a single cable segment.
 
 - A network that uses a combination of physical or logical topologies. In practice most networks use hybrid topologies. For example, modern types of Ethernet are physically wired as stars but logically operate as buses. Nodes within the same logical bus segment are in the same collision domain. When Ethernet is deployed with a legacy hub appliance, this can be described as a physical star-logical bus topology.
+
+- Protocol that prevents layer 2 network loops by dynamically blocking switch ports as needed.
