@@ -161,3 +161,15 @@ Conversely, hosts with addresses in different subnets or IP networks must be sep
 - A routing loop occurs when two routers use one another as the path to a network. Packets caught in a routing loop circle around until the TTL expires. One symptom of a potential routing loop is for routers to generate ICMP Time Exceeded error messages.You can use traceroute to diagnose a routing loop by looking for IP addresses that appear multiple times in the output.
 
 - Asymmetrical routing Topology where the return path is different to the forward path, Asymmetric routing is problematic where the return path is much higher latency than the forward path or where the difference between the paths causes stateful firewall or network address translation (NAT) devices to filter or drop communications. You should use traceroute from both sender and receiver to compare the per-hop latency to identify where the routing topology is misconfigured.
+
+-  point-to-point: A point-to-point topology is one where two nodes have a dedicated connection to one another.
+
+-  star topology: In a star network, each node is connected to a central point, typically a switch or a router. The central point mediates communications between the attached nodes. When a device such as a hub is used, the hub receives signals from a node and repeats the signal to all other connected nodes. Therefore the bandwidth is still shared between all nodes. When a device such as a switch is used, point-to-point links are established between each node as required. The circuit established between the two nodes can use the full bandwidth capacity of the network media.
+
+- A topology often used in WANs where each device has (in theory) a point-to-point connection with every other device (fully connected); in practice, only the more important devices are directly interconnected (partial mesh).
+
+- In a ring topology, all of the computers are connected in a circle. The ring comprises a series of point-to-point links between each device. Signals pass from device to device in a single direction with the signal regenerated at each device. The physical ring topology is no longer used on LANs, but it does remain a feature of many WANs.
+
+- Bus topology: a shared access media where all nodes attach directly to a single cable segment.
+
+- A network that uses a combination of physical or logical topologies. In practice most networks use hybrid topologies. For example, modern types of Ethernet are physically wired as stars but logically operate as buses. Nodes within the same logical bus segment are in the same collision domain. When Ethernet is deployed with a legacy hub appliance, this can be described as a physical star-logical bus topology.
