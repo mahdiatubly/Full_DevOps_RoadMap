@@ -30,6 +30,7 @@
         $nslookup [DN] [DNS example 8.8.8.8]
         # Or to get more details
         $dig [DN]
+        $dig @[DN]
 
 - APIPA Adress (Automatic Private IP Addressing): assigns a class B address from `169.254.0.0` to `169.254.255.255` to the client when DHCP server is either permanently or temporarly unavailable.
   -IGMP protocol is used in the multicas addressing to config group memebership & IP addresses.
