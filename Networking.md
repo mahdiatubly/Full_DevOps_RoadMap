@@ -259,3 +259,5 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
 -  Service (SRV) record contains the service name and port on which a particular application is hosted. SRV records are often used to locate VoIP or media servers. SRV records are also an essential part of the infrastructure supporting Microsoft’s Active Directory; they are used by clients to locate domain controllers, for instance. As with MX, SRV records can be configured with a priority value.
 
 - DomainKeys Identified Mail (DKIM): records are used to decide whether you should allow received email from a given source, preventing spam and mail spoofing. DKIM can use encrypted signatures to prove that a message really originated from the domain it claims.
+
+- A reverse DNS query returns the host name associated with a given IP address. This information is stored in a reverse lookup zone as a pointer (PTR) record.
