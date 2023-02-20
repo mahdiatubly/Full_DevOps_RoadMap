@@ -270,3 +270,6 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
         
         $hostname --fqdn
         
+        
+- The Windows PowerShell environment provides a more sophisticated scripted environment that you can use to issue cmdlets to test DNS name resolution (and change DNS settings as well, if required). PowerShell® provides a cmdlet called Resolve-DnsName, which allows a more flexible method of testing name resolution than nslookup, as it allows testing of the different methods of name resolution (HOSTS file, DNS cache, and DNS server).
+        
