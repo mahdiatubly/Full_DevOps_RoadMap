@@ -181,3 +181,31 @@ Conversely, hosts with addresses in different subnets or IP networks must be sep
 -  broadcast storm: Traffic that is recirculated and amplified by loops in a switching topology, causing network slowdowns and crashing switches.
 
 - Normally, the network would be designed with a 1:1 mapping between VLANs and subnets.Implementing VLANs can reduce broadcast traffic
+
+-  trunks: Backbone link established between switches and routers to transport frames for multiple virtual LANs (VLANs).
+
+- A packet addressed to the loopback address can be received on any available hardware interface.
+
+- The port number is used in conjunction with the source IP address to form a socket where it's a combination of a TCP/UDP port number and IP address. A client socket can form a connection with a server socket to exchange data. Each socket is bound to a software process. Only one process can operate a socket at any one time.
+
+- Transmission Control Protocol (TCP) works at the Transport layer to provide connection-oriented, guaranteed communication using acknowledgements to ensure that delivery has occurred. If packets are missing, they can be retransmitted. TCP can be used for unicast transmission only. CP takes data from the Application layer as a stream of bytes and divides it up into segments, each of which is given a header. The TCP segments become the payload of the underlying IP datagrams. The use of sequencing, acknowledgments, and retransmissions means that TCP requires numerous header fields to maintain state information. The main fields in the header of a TCP segment are: Source port, Destination port, Sequence number, Sequence number (A Negative Acknowledgement (NAK or NACK) forces retransmission.), Window (The amount of data the host is willing to receive before sending another acknowledgement.), etc.
+
+- Servers can (usually) support thousands or even millions of TCP connections simultaneously.
+
+- A host can also end a session abruptly using a reset (RST) segment. This would not be typical behavior and might need to be investigated. A server or security appliance might refuse connections using RST, a client or server application might be faulty, or there could be some sort of suspicious scanning activity ongoing.                                  
+- UDP header size is 8 bytes, compared to 20 bytes (or more) for TCP.
+
+-  IP scanner: Utility that can probe a network to detect which IP addresses are in use by hosts. IP scanning can be performed using lightweight standalone open source or commercial tools, such as Nmap, AngryIP, or PRTG. Windows Server is bundled with a DDI product. Other notable vendors and solutions include ManageEngine, Infoblox, SolarWinds, Bluecat, and Men -and- Mice.
+
+-  Nmap Security Scanner: A highly adaptable, open-source network scanner used primarily to scan hosts and ports to locate services and detect vulnerabilities.
+
+- The netstat command allows you to check the state of ports on the local host. You can use netstat to check for service misconfigurations, such as a host running a web or FTP server that a user installed without authorization. You may also be able to identify suspicious remote connections to services on the local host or from the host to remote IP addresses.On Linux, running netstat without switches shows active connections of any type. If you want to show different connection types, you can use the switches for Internet connections for TCP ( -t ) and UDP ( -u ), raw connections ( -w ), and UNIX® sockets/local server ports ( -x ). Using the -a switch includes ports in the listening state in the output. -l shows only ports in the listening state, omitting established connections. For example, the following command shows listening and established Internet connections (TCP and UDP) only: netstat -tua. Another common task is to identify which software process is bound to a socket. On Windows, -o shows the Process ID (PID) number that has opened the port, while -b shows the process name. In Linux, use -p to show the PID and process name. netstat can also be set to run continuously. In Windows, run netstat nn , where nn is the refresh interval in seconds (press Ctrl+C to stop); in Linux, run netstat -c .
+
+- Many of the tools used for host discovery can also perform remote port scanning. As with host discovery, there are many different techniques for performing port scans. Some techniques are designed for covert use (to try to avoid detection of the scanning activity by the target) and some are designed to probe beyond security barriers, such as firewalls.
+
+- As examples, the following represent some of the main types of scanning that Nmap can perform:
+
+TCP SYN (-sS)-This is a fast technique (also referred to as half-open scanning) as the scanning host requests a connection without acknowledging it. The target's response to the scan's SYN packet identifies the port state.
+TCP connect (-sT)-A half-open scan requires Nmap to have privileged access to the network driver so that it can craft packets. If privileged access is not available, Nmap must use the OS to attempt a full TCP connection. This type of scan is less stealthy.
+UDP scans (-sU)-Scan UDP ports. As these do not use ACKs, Nmap needs to wait for a response or timeout to determine the port state, so UDP scanning can take a long time. A UDP scan can be combined with a TCP scan.
+Port range (-p)-By default, Nmap scans 1,000 commonly used ports. Use the -p argument to specify a port range. You can also use --top-ports n , where n is the number of commonly used ports to scan. The frequency statistics for determining how commonly a port is used are stored in the nmap-services configuration file.
