@@ -243,3 +243,9 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
         A DNS label should use letter, digit, and hyphen characters only. 
         A label should not start with a hyphen. Punctuation characters such as the period (.) or forward slash (/) should not be used.
         DNS labels are not case-sensitive.
+        
+- Iterative lookups: DNS query type whereby a server responds with information from its own data store only.
+
+-  Recursive lookup: DNS query type whereby a server submits additional queries to other servers to obtain the requested information.
+
+- Resource records: Data file storing information about a DNS zone. The main records are as follows: A (maps a host name to an IPv4 address), AAAA (maps to an IPv6 address), CNAME (an alias for a host name), MX (the IP address of a mail server), and PTR (allows a host name to be identified from an IP address).
