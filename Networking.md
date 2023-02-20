@@ -251,3 +251,7 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
 - Resource records: Data file storing information about a DNS zone. The main records are as follows: A (maps a host name to an IPv4 address), AAAA (maps to an IPv6 address), CNAME (an alias for a host name), MX (the IP address of a mail server), and PTR (allows a host name to be identified from an IP address).
 
 - Authoritative name server: DNS server designated by a name server record for the domain that holds a complete copy of zone records.
+
+- Authoritative name server: DNS server designated by a name server record for the domain that holds a complete copy of zone records.
+
+- A Canonical Name (CNAME) (or alias) record is used to configure an alias for an existing address record (A or AAAA). For example, the IP address of a web server with the host record lamp could also be resolved by the alias www . CNAME records are also often used to make DNS administration easier. For example, an alias can be redirected to a completely different host temporarily during system maintenance. here is nothing to stop an administrator configuring multiple address records to point different host names to the same IP address. Using CNAME records is usually considered better practice, however. It is also possible to configure multiple A or AAAA records with the same host name but different IP addresses. This is usually done as a basic load balancing technique, referred to as round robin DNS.
