@@ -249,3 +249,5 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
 -  Recursive lookup: DNS query type whereby a server submits additional queries to other servers to obtain the requested information.
 
 - Resource records: Data file storing information about a DNS zone. The main records are as follows: A (maps a host name to an IPv4 address), AAAA (maps to an IPv6 address), CNAME (an alias for a host name), MX (the IP address of a mail server), and PTR (allows a host name to be identified from an IP address).
+
+- Authoritative name server: DNS server designated by a name server record for the domain that holds a complete copy of zone records.
