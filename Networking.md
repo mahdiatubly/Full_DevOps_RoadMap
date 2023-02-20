@@ -27,7 +27,7 @@
 
 - To get the IP addr of a domain name:
 
-        $nslookup [DN]
+        $nslookup [DN] [DNS example 8.8.8.8]
         # Or to get more details
         $dig [DN]
 
