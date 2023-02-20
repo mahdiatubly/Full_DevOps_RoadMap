@@ -174,4 +174,10 @@ Conversely, hosts with addresses in different subnets or IP networks must be sep
 
 - A network that uses a combination of physical or logical topologies. In practice most networks use hybrid topologies. For example, modern types of Ethernet are physically wired as stars but logically operate as buses. Nodes within the same logical bus segment are in the same collision domain. When Ethernet is deployed with a legacy hub appliance, this can be described as a physical star-logical bus topology.
 
-- Protocol that prevents layer 2 network loops by dynamically blocking switch ports as needed.
+-  spanning tree protocol (STP): Protocol that prevents layer 2 network loops by dynamically blocking switch ports as needed.
+
+-  switching loop: Troubleshooting issue where layer 2 frames are forwarded between switches or bridges in an endless loop.
+
+-  broadcast storm: Traffic that is recirculated and amplified by loops in a switching topology, causing network slowdowns and crashing switches.
+
+- Normally, the network would be designed with a 1:1 mapping between VLANs and subnets.Implementing VLANs can reduce broadcast traffic
