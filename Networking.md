@@ -229,3 +229,17 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
         The IP address(es) of DNS servers that can act as resolvers for name queries.
         The DNS suffix (domain name) to be used by the client.
         Other useful server options, such as time synchronization (NTP), file transfer (TFTP), or VoIP proxy.
+        
+- A reservation is a mapping of a MAC address or interface ID to a specific IP address within the DHCP server's address pool.
+
+-  IP helper: Command set in a router OS to support DHCP relay and other broadcast forwarding functionality.
+
+- IPv6's Stateless Address Autoconfiguration (SLAAC) process can locate routers (default gateways) and generate a host address with a suitable network prefix automatically. In this context, the role of a DHCP server in IPv6 is different. DHCPv6 is often just used to provide additional option settings, rather than leases for host IP addresses. The format of messages is different, but the process of DHCP server discovery and address leasing (if offered) is fundamentally the same. As IPv6 does not support broadcast, clients use the multicast address ff02::1:2 to discover a DHCP server. DHCPv6 uses ports 546 (clients) and 547 (servers), rather than ports 68 and 67 as in DHCPv4.
+
+-  An example of an FQDN might be nut.widget.example. An FQDN is made up of the host name and a domain suffix. In the example, the host name is nut and the domain suffix is widget.example. This domain suffix consists of the domain name widget within the top-level domain (TLD) .example . A domain suffix could also contain subdomains between the host and domain name. The trailing dot or period represents the root of the hierarchy. 
+
+        The total length of an FQDN cannot exceed 253 characters, with each label
+        (part of the name defined by a period) no more than 63 characters (excluding the periods).
+        A DNS label should use letter, digit, and hyphen characters only. 
+        A label should not start with a hyphen. Punctuation characters such as the period (.) or forward slash (/) should not be used.
+        DNS labels are not case-sensitive.
