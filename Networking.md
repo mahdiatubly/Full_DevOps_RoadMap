@@ -215,3 +215,17 @@ When services are discovered, you can use Nmap with the -sV or -A switch to prob
 
 -  Protocol analyzer: Utility that can parse the header fields and payloads of protocols in captured frames for display and analysis. One function of a protocol analyzer is to parse each frame in a stream of traffic to reveal its header fields and payload contents in a readable format. This is referred to as packet analysis. Analyzing protocol data at the frame or packet level will help to identify protocol or service misconfigurations. As a live stream or capture file can contain hundreds or thousands of frames, you can use display filters to show only particular frame or sequence of frames. Another useful option is to use the Follow TCP Stream context command to reconstruct the packet contents for a TCP session.
 Another function of a protocol analyzer is to perform traffic analysis. Rather than reading each frame individually, you use the tool to monitor statistics related to communications flows, such as bandwidth consumed by each protocol or each host, identifying the most active network hosts, monitoring link utilization and reliability, and so on. In Wireshark, you can use the Statistics menu to access traffic analysis tools.
+
+- Sometimes, the DHCP lease process is called the DORA process: Discover, Offer, Request, and Ack(nowledge).
+
+- Scope: Range of consecutive IP addresses in the same subnet that a DHCP server can lease to clients.
+
+- A Windows client can be forced to release a lease by issuing a command such as ipconfig. In Linux, the utility dhclient is often used for this task, though modern distributions might use NetworkManager or systemd-networkd. A Windows host that fails to obtain a lease will revert to an automatic IP address (APIPA) or link-local configuration and select an address in the 169.254.0.0/16 range. Linux might use link-local addressing, set the address to unknown (0.0.0.0), or leave the interface unconfigured. 
+
+- DHCP Options
+When the DHCP server offers a configuration to a client, at a minimum it must supply an IP address and subnet mask. Typically, it will also supply other IP-related settings, known as DHCP options. Each option is identified by a tag byte or decimal value between 0 and 255 (though neither 0 nor 255 can be used as option values). Some widely used options include:
+
+        The default gateway (IP address of the router).
+        The IP address(es) of DNS servers that can act as resolvers for name queries.
+        The DNS suffix (domain name) to be used by the client.
+        Other useful server options, such as time synchronization (NTP), file transfer (TFTP), or VoIP proxy.
