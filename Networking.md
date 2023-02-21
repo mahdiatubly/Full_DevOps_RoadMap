@@ -38,7 +38,9 @@
 - 0.0.0.0/8: commonly used by clients to request DHCP lease
 - Nmap ("network mapper") is a very common and useful utility for discovering nodes on the network and scaning that node to discover open ports:
 
-  $nmap [IP address]
+  $nmap [IP address or IP addr range]
+  # To conduct a simple network scan by using nmap:
+  $nmap -sn 10.1.16.0/24
   
 - The Hypertext Transfer Protocol (HTTP) does not encrypt network traffic or confirm the identity of the destination web server, hence the importance of HTTPS connectivity for secure web browsing.
 - Ping uses ICMP(layer 3), which does not operate at the Transport layer (where port numbers exist).
