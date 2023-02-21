@@ -277,5 +277,53 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
         $hostname --fqdn
         
         
-- The Windows PowerShell environment provides a more sophisticated scripted environment that you can use to issue cmdlets to test DNS name resolution (and change DNS settings as well, if required). PowerShell® provides a cmdlet called Resolve-DnsName, which allows a more flexible method of testing name resolution than nslookup, as it allows testing of the different methods of name resolution (HOSTS file, DNS cache, and DNS server).
+- The Windows PowerShell environment provides a more sophisticated scripted environment that you can use to issue cmdlets to test DNS name resolution (and change DNS settings as well, if required). PowerShell provides a cmdlet called Resolve-DnsName, which allows a more flexible method of testing name resolution than nslookup, as it allows testing of the different methods of name resolution (HOSTS file, DNS cache, and DNS server).
         
+- HTTP Headers and Payload: The response and request formats are defined in the HTTP header. The HTTP payload is usually used to serve HyperText Markup Language (HTML) web pages, HTTP also features a forms mechanism (POST) that enables a user to submit data from the client to the server. HTTP is nominally a stateless protocol; this means that the server is not required to preserve information about the client during a session.
+
+- The main web server platforms are Apache®, Microsoft Internet Information Server (IIS), and nginx.
+
+- SSL/TLS works as a layer between the Application and Transport layers of the TCP/IP stack, or, in OSI terms, at the Session layer. It's normally used to encrypt TCP connections. When it is used with the HTTP application, it is referred to as HTTP Secure (HTTPS). TLS can also be used to secure other TCP application protocols, such as FTP, POP3/IMAP, SMTP, and LDAP.
+
+- TLS can also be used with UDP, referred to as Datagram Transport Layer Security (DTLS), most often in virtual private networking (VPN) solutions.
+
+- Encrypted traffic between the client and server is sent over TCP port 443 (by default), rather than the open and unencrypted port 80. 
+
+- An FTP client connects to TCP port 21 on an FTP server and opens a chosen dynamic client port number (n). The TCP port 21 control port is used to transfer commands and status information, but not for data transfer. Data transfer can operate in one of two modes: active or passive. In active mode, the client sends a PORT command specifying its chosen data connection port number (typically n+1), and the server opens the data connection between the chosen client port and TCP port 20 on the server. In passive mode, the client opens a data port (again, typically n+1) and sends the PASV command to the server's control port. The server then opens a random high port number and sends it to the client using the PORT command. The client then initiates the connection between the two ports. Active FTP poses a configuration problem for some firewalls, as the server is initiating the inbound connection, but there is no way of predicting which port number will be utilized. However, not all FTP servers and clients can operate in passive mode.
+
+- Secure FTP (SFTP): A secure version of the File Transfer Protocol that uses a Secure Shell (SSH) tunnel as an encryption method to transfer, access, and manage files.
+
+- Explicit TLS (FTPES)-Use the AUTH TLS command to upgrade an unsecure connection established over port 21 to a secure one. This protects authentication credentials. The data connection for the actual file transfers can also be encrypted (using the PROT command).
+
+- Implicit TLS (FTPS)-Negotiate an SSL/TLS tunnel before the exchange of any FTP commands. This mode uses the secure port 990 for the control connection. FTPS is tricky to configure when there are firewalls between the client and server. Consequently, FTPES is usually the preferred method.
+
+- On a Windows network, the File/Print Sharing Service is provided by the Server Message Block (SMB) protocol. SMB allows a host to share its directories/files and printers to make them available for other machines to use. Support for SMB in UNIX- or Linux-based machines and network attached storage (NAS) appliances is provided by using the Samba software suite, which allows a Windows client to access a Linux host as though it were a Windows file or print server. SMB version 3 supports message encryption, which can be enabled on a file server or on a per-share basis. An encrypted share can only be accessed by an SMB 3.0 or higher client. SMB has gone through several updates, with SMB3 as the current version. SMB1 has very serious security vulnerabilities and is now disabled by default on current Windows versions 
+
+- By default, the relational dabases ports are unsecure. However, the RDBMS server can be installed with a certificate and configured to enable TLS transport encryption. NoSQL databases are typically accessed using an application programming interface (API) over HTTPS.
+
+-  Simple Mail Transfer Protocol (SMTP): Application protocol used to send mail between hosts on the Internet. Messages are sent between servers over TCP port 25 or submitted by a mail client over secure port TCP/587. SMTP is useful only to deliver mail to hosts that are permanently available. SMTP communications can be secured using the TLS version of the protocol (SMTPS). There are two ways for SMTP to use TLS:
+
+        STARTTLS-This is a command that upgrades an existing unsecure connection to use TLS. This is also referred to as explicit TLS or opportunistic TLS.
+        SMTPS-This establishes the secure connection before any SMTP commands (HELO, for instance) are exchanged. This is also referred to as implicit TLS.
+        
+- Mail clients can use port 25 to submit messages to the server for delivery, but this is not best practice. Use of port 25 is typically reserved for relay between servers.
+
+- Post Office Protocol (POP): Application protocol that enables a client to download email messages from a server mailbox to a client over port TCP/110 or secure port TCP/995.  A POP client application, such as Microsoft Outlook® or Mozilla Thunderbird®, establishes a connection to the POP server on TCP port 110. The user is authenticated (by username and password), and the contents of his or her mailbox are downloaded for processing on the local PC. Generally speaking, the messages are deleted from the mailbox server when they are downloaded, though some clients have the option to leave messages on the server. POP can be secured by using TLS encryption. The default TCP port for secure POP (POP3S) is port 995.
+
+-  Internet Message Access Protocol (IMAP): Application protocol providing a means for a client to access and manage email messages stored in a mailbox on a remote server. IMAP4 utilizes TCP port number 143, while the secure version IMAPS uses TCP/993. IMAP supports permanent connections to a server and connecting multiple clients to the same mailbox simultaneously. It also allows a client to manage the mailbox on the server (to organize messages in folders and to control when they are deleted, for instance) and to create multiple mailboxes.
+
+- In a Windows environment, the proprietary Messaging Application Programming Interface (MAPI) protocol is typically used to access Microsoft Exchange mailboxes. MAPI uses HTTPS as a secure transport protocol.
+
+- Voice over IP (VoIP): Generic name for protocols that carry voice traffic over data networks.
+
+- Telnet: Application protocol supporting unsecure terminal emulation for remote host management. Telnet runs over TCP port 23.
+
+-   Remote Desktop Protocol (RDP) is Microsoft's protocol for operating remote GUI connections to a Windows machine. RDP uses TCP port 3389. The administrator can specify permissions to connect to the server via RDP and can configure encryption on the connection. RDP is mainly used for the remote administration of a Windows server or client, but another function is to publish software applications on a server, rather than installing them locally on each client (application virtualization). RDP clients are available for other operating systems, including Linux, macOS, iOS, and Android so you can connect to a Windows desktop remotely using a non-Windows device. There are also open-source RDP server products, such as xrdp
+
+- Network Time Protocol (NTP) enables the synchronization of these time-dependent applications. NTP works over UDP on port 123. Client hosts (application servers and workstations) usually obtain the time by using a modified form of the protocol called Simple NTP (SNTP). SNTP works over the same port as NTP. A host that supports only SNTP cannot act as a time source for other hosts. In Windows, the Time Service can be configured by using the w32tm command. In Linux, the ntp package can be configured via /etc/ntp.conf. If a local stratum 1 server cannot be implemented on the local network, the time source can be configured using one or more public NTP server pools, such as time.google.com, time.windows.com, time.apple.com, time.nist.gov, or pool.ntp.org.
+
+- Simple Network Management Protocol (SNMP): Application protocol used for monitoring and managing network devices. SNMP works over UDP ports 161 and 162 by default.
+
+- Syslog: Application protocol and event logging format enabling different appliances and software applications to transmit logs or event records to a central server. Syslog works over UDP port 514 by default.
+
+- Monitoring is aligned with incident response; analysis is aligned with investigating the cause of incidents or preventing incidents in the first place.
