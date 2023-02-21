@@ -327,3 +327,11 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
 - Syslog: Application protocol and event logging format enabling different appliances and software applications to transmit logs or event records to a central server. Syslog works over UDP port 514 by default.
 
 - Monitoring is aligned with incident response; analysis is aligned with investigating the cause of incidents or preventing incidents in the first place.
+
+-  Latency: The time it takes for a signal to reach the recipient. A video application can support a latency of about 80 ms, while typical latency on the Internet can reach 1000 ms at peak times. Latency is a particular problem for 2-way applications, such as VoIP (telephone) and online conferencing.
+
+-  Jitter: Variation in the time it takes for a signal to reach the recipient. Jitter manifests itself as an inconsistent rate of packet delivery. If packet loss or delay is excessive, then noticeable audio or video problems (artifacts) are experienced by users. You can test the latency of a link using tools such as ping, pathping, and mtr. You can also use mtr to calculate jitter. When assessing latency, you need to consider the Round Trip Time (RTT). VoIP is generally expected to require an RTT of less than 300 ms. Jitter should be 30 ms or less. The link should also not exhibit more than 1 percent packet loss.
+
+-  Differentiated Services (DiffServ): Header field used to indicate a priority value for a layer 3 (IP) packet to facilitate Quality of Service (QoS) or Class of Service (CoS) scheduling.
+
+- NetFlow: Cisco-developed means of reporting network flow information to a structured database. NetFlow allows better understanding of IP traffic flows as used by different network applications and hosts.
