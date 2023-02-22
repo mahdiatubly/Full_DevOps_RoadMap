@@ -349,3 +349,5 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
 - You can display SSH and web server information by conducting banner grabbing (the purpose of a "banner grab" connection is to detect software name and version information). Run the following command to conduct a banner grab by using netcat: 
 
         $nc -vn 10.1.16.12 22
+
+-  the two DNS resource record types NS records contain the IP address of a DNS server that can resolve names and IP addresses. SOA records contain domain contact and responsibility information
