@@ -335,3 +335,5 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
 -  Differentiated Services (DiffServ): Header field used to indicate a priority value for a layer 3 (IP) packet to facilitate Quality of Service (QoS) or Class of Service (CoS) scheduling.
 
 - NetFlow: Cisco-developed means of reporting network flow information to a structured database. NetFlow allows better understanding of IP traffic flows as used by different network applications and hosts.
+
+- `show ip rip` shows the routes learned by RIP
