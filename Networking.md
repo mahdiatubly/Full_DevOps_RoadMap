@@ -337,3 +337,7 @@ When the DHCP server offers a configuration to a client, at a minimum it must su
 - NetFlow: Cisco-developed means of reporting network flow information to a structured database. NetFlow allows better understanding of IP traffic flows as used by different network applications and hosts.
 
 - `show ip rip` shows the routes learned by RIP
+
+- To extend the number of available ports might a network administrator interconnect managed switches
+
+- Routing Information Protocol (RIP) has a default administrative distance (AD) value of 120. In AD, lower values are preferred, so RIP is less trusted than other protocols.
