@@ -400,9 +400,24 @@ Location factor-somewhere you are (such as using a mobile device with location s
 
 - When the Firebox uses RADIUS for an authentication attempt:
 
-`The user tries to authenticate, either through a browser-based HTTPS connection to the device over port 4100, or through a connection using Mobile VPN with IPSec. The device reads the user name and password. The device creates a message called an Access-Request message and sends it to the RADIUS server. The device uses the RADIUS shared secret in the message. The password is always encrypted in the Access-Request message. The RADIUS server makes sure that the Access-Request message is from a known client (the Firebox). If the RADIUS server is not configured to accept the device as a client, the server discards the Access-Request message and does not send a message back.
+``` The user tries to authenticate, either through a browser-based HTTPS connection to the device over port 4100,
+or through a connection using Mobile VPN with IPSec. The device reads the user name and password. The device creates
+a message called an Access-Request message and sends it to the RADIUS server. The device uses the RADIUS shared secret
+in the message. The password is always encrypted in the Access-Request message. The RADIUS server makes sure that the
+Access-Request message is from a known client (the Firebox). If the RADIUS server is not configured to accept the device
+as a client, the server discards the Access-Request message and does not send a message back.
 
-If the device is a client known to the RADIUS server and the shared secret is correct, the server looks at the authentication method requested in the Access-Request message. If the Access-Request message uses an allowed authentication method, the RADIUS server gets the user credentials from the message and looks for a match in a user database. If the user name and password match an entry in the database, the RADIUS server can get additional information about the user from the user database (such as remote access approval, group membership, logon hours, and so on).
-The RADIUS server checks to see whether it has an access policy or a profile in its configuration that matches all the information it has about the user. If such a policy exists, the server sends a response.
+If the device is a client known to the RADIUS server and the shared secret is correct, the server looks at the authentication
+method requested in the Access-Request message. If the Access-Request message uses an allowed authentication method, the RADIUS
+server gets the user credentials from the message and looks for a match in a user database. If the user name and password match
+an entry in the database, the RADIUS server can get additional information about the user from the user database (such as remote
+access approval, group membership, logon hours, and so on).The RADIUS server checks to see whether it has an access policy or a
+profile in its configuration that matches all the information it has about the user. If such a policy exists, the server sends 
+a response.
 
-If any of the previous conditions fail, or if the RADIUS server has no matching policy, it sends an Access-Reject message that shows authentication failure. The RADIUS transaction ends and the user is denied access. If the Access-Request message meets all the previous conditions, RADIUS sends an Access-Accept message to the device. The RADIUS server uses the shared secret for any response it sends. If the shared secret does not match, the device rejects the RADIUS response. To see diagnostic log messages for authentication, Set the Diagnostic Log Level and change the log level for the Authentication category.`
+If any of the previous conditions fail, or if the RADIUS server has no matching policy, it sends an Access-Reject message 
+that shows authentication failure. The RADIUS transaction ends and the user is denied access. If the Access-Request message
+meets all the previousconditions, RADIUS sends an Access-Accept message to the device. The RADIUS server uses the shared 
+secret for any response it sends. If the shared secret does not match, the device rejects the RADIUS response. To see 
+diagnostic log messages for authentication, Set the Diagnostic Log Level and change the log level for the 
+Authentication category. ```
