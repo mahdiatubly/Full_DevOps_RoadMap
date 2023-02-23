@@ -452,3 +452,7 @@ Proxy servers can generally be classed as non-transparent or transparent. A nont
 - In NAT Port Address Translation (PAT): Maps private host IP addresses onto a single public IP address. Each host is tracked by assigning it a random high TCP port for communications.
 
 - Network Access Control (NAC): General term for the collected protocols, policies, and hardware that authenticate and authorize access to a network at the device level.
+
+- Intrusion detection system (IDS): Security appliance or software that uses passive hardware sensors to monitor traffic on a specific segment of the network.  Typically, an IDS is positioned behind a firewall. The aim is to detect suspicious traffic that the firewall has not blocked, providing defense in depth. 
+
+- Intrusion prevention system (IPS): Security appliance or software that combines detection capabilities with functions that can actively block attack. One typical preventive measure is to end the session by sending a TCP reset packet to the attacking host. Another option is for the sensor to apply a temporary filter on the firewall to block the attacker's IP address (shunning). Other advanced measures include throttling bandwidth to attacking hosts, applying complex firewall filters, and even modifying suspect packets to render them harmless.
