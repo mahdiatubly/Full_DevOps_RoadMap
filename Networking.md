@@ -373,3 +373,36 @@ Ownership factor-something you have (such as a smart card).
 Human or biometric factor-something you are (such as a fingerprint).
 Behavioral factor-something you do (such as making a signature).
 Location factor-somewhere you are (such as using a mobile device with location services).
+
+- Local Security Authority (LSA) compares the submitted credential to a hash stored in the Security Accounts Manager (SAM) database, which is part of the registry. This is also referred to as interactive logon. the LSA can pass the credentials for authentication to a network service. The preferred system for network authentication is based on Kerberos, but legacy network applications might use NT LAN Manager (NTLM) authentication.
+
+- In Linux, local user account names are stored in /etc/passwd. When a user logs in to a local interactive shell, the password is checked against a hash stored in /etc/shadow. Interactive login over a network is typically accomplished using Secure Shell (SSH). With SSH, the user can be authenticated using cryptographic keys instead of a password.
+
+- A pluggable authentication module (PAM) is a package for enabling different authentication providers, such as smart card login (tecmint.com/configure-pam-in-centos-ubuntu-linux). The PAM framework can also be used to implement authentication to network servers.
+
+-  Single sign-on (SSO) system allows the user to authenticate once to a local device and be authorized to access compatible application servers without having to enter credentials again. In Windows, SSO is provided by the Kerberos framework.
+
+- Kerberos: Single sign-on authentication and authorization service that is based on a time-sensitive ticket-granting system. Key Distribution Center (KDC) authenticate the user then give them the granting ticket.
+
+- As encryption using a public key is relatively slow; rather than encrypting the whole message using a public key, more typically, the public key is used to encrypt a symmetric encryption key for use in a single session and exchange it securely. The symmetric session key is then used to encrypt the actual message. A symmetric key can perform both encryption and decryption.
+
+- When you want to authenticate yourself to others, you create a signature and sign it by encrypting the signature with your private key. You give others your public key to use to decrypt the signature. As only you know the private key, everyone can be assured that only you could have created the signature.
+
+- The basic problem with public key cryptography lies in proving the identity of the owner of a public key. The system is vulnerable to an on-path attack where a threat actor substitutes your public key for their own. Public key infrastructure (PKI) aims to prove that the owners of public keys are who they say they are.
+
+- Extensible Authentication Protocol (EAP): Framework for negotiating authentication methods that enables systems to use hardware-based identifiers, such as fingerprint scanners or smart card readers, for authentication, and establish secure tunnels through which to submit credentials.
+
+- RADIUS typically uses UDP ports 1812 and 1813. Each RADIUS client must be configured with the IP address of the RADIUS server plus the same shared secret.
+
+- TACACS+ is often used in authenticating administrative access to routers and switches. It uses TCP over port 49 and the reliable delivery offered by TCP makes it easier to detect when a server is down.
+
+- Your network monitor is recording high numbers of ICMP Time Exceeded notifications. That indicates a routing loop, where packets circulate between two routers until the time to live (TTL) is exceeded.
+
+- When the Firebox uses RADIUS for an authentication attempt:
+
+`The user tries to authenticate, either through a browser-based HTTPS connection to the device over port 4100, or through a connection using Mobile VPN with IPSec. The device reads the user name and password. The device creates a message called an Access-Request message and sends it to the RADIUS server. The device uses the RADIUS shared secret in the message. The password is always encrypted in the Access-Request message. The RADIUS server makes sure that the Access-Request message is from a known client (the Firebox). If the RADIUS server is not configured to accept the device as a client, the server discards the Access-Request message and does not send a message back.
+
+If the device is a client known to the RADIUS server and the shared secret is correct, the server looks at the authentication method requested in the Access-Request message. If the Access-Request message uses an allowed authentication method, the RADIUS server gets the user credentials from the message and looks for a match in a user database. If the user name and password match an entry in the database, the RADIUS server can get additional information about the user from the user database (such as remote access approval, group membership, logon hours, and so on).
+The RADIUS server checks to see whether it has an access policy or a profile in its configuration that matches all the information it has about the user. If such a policy exists, the server sends a response.
+
+If any of the previous conditions fail, or if the RADIUS server has no matching policy, it sends an Access-Reject message that shows authentication failure. The RADIUS transaction ends and the user is denied access. If the Access-Request message meets all the previous conditions, RADIUS sends an Access-Accept message to the device. The RADIUS server uses the shared secret for any response it sends. If the shared secret does not match, the device rejects the RADIUS response. To see diagnostic log messages for authentication, Set the Diagnostic Log Level and change the log level for the Authentication category.`
