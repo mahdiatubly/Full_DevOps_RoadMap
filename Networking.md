@@ -1,4 +1,4 @@
-$nslookup [DN] [DNS example 8.8.8.8]# Networking
+# Networking
 
 - The Server Message Block protocol (SMB protocol) is a client-server communication protocol used for sharing access to files, printers, serial ports and other resources on a network. SMB relies on the TCP and IP protocols for transport. This combination potentially allows file sharing over complex, interconnected networks, including the public Internet. The SMB server component uses TCP port 445.(works on presentation layer)
 - DHCP is an application layer protocol
