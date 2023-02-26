@@ -428,4 +428,10 @@ _To access a service you can use: curl IP:Port_
         $kubectl get pods --selector [var.]=[val.] --no-headers
         $kubectl get all --selector [var.]=[val.] --no-headers
         
+- To extract the pod definition in YAML format to a file using the command
+        
+        # Note that you can't to edit pods without recreating htem.
+        $kubectl get pod webapp -o yaml > my-new-pod.yaml
+        
+- The status OOMKilled indicates that it is failing because the pod ran out of memory.
 
