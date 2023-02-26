@@ -352,7 +352,7 @@ _To access a service you can use: curl IP:Port_
                 nodeSelector:
                         size:large
   
-- The primary purpose of node affinity feature is to ensure that pods are hosted on particular nodes. Affinity provides more flexibility on the chosen node. To select a range of nodes to run the pod:
+- The primary purpose of node affinity feature is to ensure that pods are hosted on particular nodes. Affinity provides more flexibility on the chosen node. To select a range of nodes to run the pod (Notice that the affinity does not guarantee that other nodes will not be added to the node (opposite to the taint)):
 
         spec:
           affinity:
