@@ -9,7 +9,8 @@
         $ip add
         # To reports interface statistics
         $ip -s link
-        # To enable or disable an interface (These changes are not persistent and apply only to the running configuration, unless run as part of a startup script)
+        # To enable or disable an interface (These changes are not persistent 
+        and apply only to the running configuration, unless run as part of a startup script)
         $ip link set [inteface name] [up OR down]
         # To modify IP address config
         $ip [add OR delete]
@@ -462,3 +463,8 @@ Proxy servers can generally be classed as non-transparent or transparent. A nont
 - A screened subnet. The edge or screening firewall is the public interface while the choke firewall is the LAN interface. The screened subnet is therefore configured as a perimeter network preventing hosts on the Internet being directly connected to hosts on the LAN.
 
 -  spanning tree protocol (STP): Protocol that prevents layer 2 network loops by dynamically blocking switch ports as needed.
+
+- Time synchronization is usually accomplished via the Network Time Protocol (NTP). Clients must be able to access a time source over port UDP 123.
+
+-  Enterprise mobility management (EMM) suites and corporate workspaces. EMM (or mobile device management) is a type of network access control solution that registers devices as they connect to the network. It can then enforce security policies while the device is connected. These might restrict use of device functions or personal apps. 
+
