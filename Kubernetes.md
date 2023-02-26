@@ -327,7 +327,7 @@ _To access a service you can use: curl IP:Port_
 
         $kubectl logs [pod name]
         
-- To restrict he pods that can run on a node thent ou have to add a Tain to the node and give a tolerance to the pods that can run on it:
+- To restrict the pods that can run on a node thent ou have to add a Tain to the node and give a tolerance to the pods that can run on it (Notice that taint and toleration do not guarantee hat a specific pod will placed in a specific node, where it can be placed in another untainted node):
 
         $kubectl taint nodes [node name] [key]=[value]: [one of theses values: NoSchedual | PreferNoSchedual | NoExecute (most restrict)]
         # To untaint the node add - to the end of he previous statement
@@ -395,4 +395,10 @@ _To access a service you can use: curl IP:Port_
 
         $kubectl replace --force -f [file.yaml]
 
+
+- To get nodes with a specific selector:
+
+        $kubectl get pods --selector [var.]=[val.] --no-headers
+        $kubectl get all --selector [var.]=[val.] --no-headers
+        
 
