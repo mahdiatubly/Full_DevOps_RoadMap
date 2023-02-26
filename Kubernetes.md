@@ -365,19 +365,46 @@ _To access a service you can use: curl IP:Port_
                     values:
                     - ssd
 
-- You can ceate default limit range for pods resource by creating  a limi trange file
+- To limit pod resorces:
 
         apiVersion: v1
-        kind: LimitRange
+        kind: Pod
         metadata:
-          name: mem-limit-range
+          name: frontend
         spec:
-          limits:
-          - default:
-              memory: 512Mi
-            defaultRequest:
-              memory: 256Mi
-            type: Container
+          containers:
+          - name: app
+            image: images.my-company.example/app:v4
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "250m"
+              limits:
+                memory: "128Mi"
+                cpu: "500m"
+          - name: log-aggregator
+            image: images.my-company.example/log-aggregator:v6
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "250m"
+              limits:
+                memory: "128Mi"
+                cpu: "500m"
+
+        - You can ceate default limit range for pods resource by creating  a limi trange file
+
+                apiVersion: v1
+                kind: LimitRange
+                metadata:
+                  name: mem-limit-range
+                spec:
+                  limits:
+                  - default:
+                      memory: 512Mi
+                    defaultRequest:
+                      memory: 256Mi
+                    type: Container
 
 - Daemon set are like replica sets, as in it helps you deploy multiple instances of pod. But it runs one copy of your pod on each node in your cluster. Whenever a new node is added to the cluster a replica of the pod is automatically added to that node, it is the perfect choice to apply a monitoring agent on nodes. Creating a DaemonSet is similar to create a replicaset, the only difference is the kind.
 
