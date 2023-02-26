@@ -391,4 +391,8 @@ _To access a service you can use: curl IP:Port_
         4. use the path to delete the file
         5. use get po --watch to see how its die, it deserves to die!
 
+- To replace a pod use the following command:
+
+        $kubectl replace --force -f [file.yaml]
+
 
