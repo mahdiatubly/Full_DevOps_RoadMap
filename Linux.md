@@ -189,4 +189,8 @@
 
         $ ..... --no-headers | wc -l
         
+- To add a script to the commands list of the bash ou have to add the script path to the path of bash:
+
+        $export PATH=$PATH:[file path]
+        
 
