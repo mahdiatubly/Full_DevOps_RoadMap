@@ -435,3 +435,6 @@ _To access a service you can use: curl IP:Port_
         
 - The status OOMKilled indicates that it is failing because the pod ran out of memory.
 
+- To add a command to run before starting the pod (put it the last option where all the things next to it are cosidedred as commands ): 
+
+        $kubectl run [name] --image=[image name] --dry-run=client -o yaml --command -- sleep 1000 > [file path]l
