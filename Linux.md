@@ -212,3 +212,29 @@
 
         read -p "The prompt to the user" [variable name]
 
+- To do mathematical operations on bash:
+
+        # Addition, subtraction, and division are all the same:
+        $ expr 5 + 5
+        # Multipation is the same but while * is reserved for "all" for that we need to add backwards slash before it:
+        $ expr 5 /* 5
+        # Also we can do the operations inside parenheses:
+        $echo $((5*5))
+        # To get float number results you need to use following:
+        $ echo 7 / 3 | bc -l 
+        
+- To add a conditional statement in bash script:
+
+        if [[condition]] && []
+        then
+                [Action like echo ....]
+        elif [[condition]] || []
+                [Action like echo ....]
+        else
+                [Action like echo ....]
+        fi
+        
+- The comparison oprators in bash:
+
+        For strings: = | !=
+        For numbers: -eq | -ne | -gt | -lt
