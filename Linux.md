@@ -193,4 +193,22 @@
 
         $export PATH=$PATH:[file path]
         
+- To define a variable in bash:
+
+        # Notice that - is not allowed in var name
+        $var.=value
+        # To use the var.:
+        $$var.
+        
+- To add a variable to a file's name:
+
+        $cp love ${love}MA
+        
+- Notice that the first place in bash has variable called 0 and the second has variable called 1:
+
+        $[scriptName] [value of $1]
+        
+- To read a value from user that run the script use the following command: 
+
+        read -p "The prompt to the user" [variable name]
 
