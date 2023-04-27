@@ -89,6 +89,16 @@
 
 - You can use -r with grep to search in all files in a directory and -i to neglect the case of the word.
 
+- /etc:  is a commonplace location to store system files that are used by your operating system. 
+
+- /var: This folder stores data that is frequently accessed or written by services or applications running on the system. For example, log files from running services and applications are written here (/var/log), or other data that is not necessarily associated with a specific user (i.e., databases and the like).
+
+- /root: the /root folder is actually the home for the "root" system user. 
+
+- /tmp: This is a unique root directory found on a Linux install. Short for "temporary", the /tmp directory is volatile and is used to store data that is only needed to be accessed once or twice. Similar to the memory on your computer, once the computer is restarted, the contents of this folder are cleared out.
+
+What's useful for us in pentesting is that any user can write to this folder by default. Meaning once we have access to a machine, it serves as a good place to store things like our enumeration scripts.
+
 - To forward an error message into a file:
 
         $..................... 2> [error.txt]
