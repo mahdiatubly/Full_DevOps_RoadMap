@@ -199,6 +199,14 @@ What's useful for us in pentesting is that any user can write to this folder by 
 
         $ ..... --no-headers | wc -l
         
+- To create a simple server to download files use the following command:
+
+        $python3 -m http.server
+        # To download a file from the python server
+        $wget http://127.0.0.1:8000/file
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+        
 - To add a script to the commands list of the bash ou have to add the script path to the path of bash:
 
         $export PATH=$PATH:[file path]
@@ -248,3 +256,5 @@ What's useful for us in pentesting is that any user can write to this folder by 
 
         For strings: = | !=
         For numbers: -eq | -ne | -gt | -lt
+
+ 
