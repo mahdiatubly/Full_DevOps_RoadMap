@@ -204,6 +204,11 @@ What's useful for us in pentesting is that any user can write to this folder by 
         $python3 -m http.server
         # To download a file from the python server
         $wget http://127.0.0.1:8000/file
+        
+- Crontab is one of the processes that is started during boot, which is responsible for facilitating and managing cron jobs. "Crontab Generator" that allows you to use a friendly application to generate the command format to shedule a process. To view the crontabs on your machine use the following command:
+
+        $crontab -e 
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
         
