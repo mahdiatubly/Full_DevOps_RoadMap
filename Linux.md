@@ -8,6 +8,10 @@
 - To get the kernel messages:
 
         $dmesg
+        
+- To change the running level of the OS use:
+
+        $init [0-6]
 
 - To get the recieved events run the following:
 
