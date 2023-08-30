@@ -79,7 +79,7 @@
         $git checkout [commit SHA]
         #To retrieve the commits use switch -
         $git switch -
-        #To retrieve the commits in a new branch use switch -c
+        #To retrieve the commits and create a new branch with the prev commit use switch -c
         $git switch -c [new branch name]
 
 - To transfer changes from the main branch to yours without leaving a merging commit you can use rebasing. (However, notice that rebasing will change the hashs of the commites where it creates a new copy of the commits not just transfering them. FOR THAT IT USED JUST WITH LOCAL REPO'S):
