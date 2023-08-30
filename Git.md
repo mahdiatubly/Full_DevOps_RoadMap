@@ -10,11 +10,11 @@
 
         $git add -p [file name]
 
-- To discover the branches that the current branch is istantiated from:
+- To discover the branches that the current branch is instantiated from:
 
         $git log --graph --decorate
 
-- To add a remote repo to upload the git repo on your local computer to github:
+- To add a remote repo to upload the git repo on your local computer to GitHub:
 
         $git remote add origin https://github.com/mahdiatubly/test.git
         $git push origin main
@@ -33,15 +33,15 @@
 
 - To get a branch from a remote repo:
 
-        $git branch --track [the neme of the new branch] origin/[branch name]
+        $git branch --track [the name of the new branch] origin/[branch name]
         # Or
-        $git checkout --track origin/[branch name (will be tacken by the new local one)]
+        $git checkout --track origin/[branch name (will be taken by the new local one)]
 
 - To get the difference between the local and the remote repo:
 
         $git branch -v
 
-- To see the difference between two brances in term of commits:
+- To see the difference between the two brances in terms of commits:
 
         $git log [first branch] [the other branch]
 
@@ -60,7 +60,7 @@
 
 - To get the updates in the remote repo:
 
-        # May be the main branch called master in some github accounts.
+        # May be the main branch called master in some GitHub accounts.
         $git pull origin main
 
 - To remove a commit:
@@ -71,18 +71,26 @@
         #With --soft will leave the changes in the staging area.
         $git reset --soft HEAD~1
 
-        #Also you can use revert which will create a new commit that shows that the commits change has deleted or reverted.
+        #Also you can use revert which will create a new commit that shows that the commits change
+        #has been deleted or reverted.
         $git revert 0953213565.....[the required commit SHA]
+        #To return to a commit and remove all the commits next to it use checkout to the SHA
+        #of the commit
+        $git checkout [commit SHA]
+        #To retrieve the commits use switch -
+        $git switch -
+        #To retrieve the commits in a new branch use switch -c
+        $git switch -c [new branch name]
 
-- To transfer changes from main branch to yours without lefting a merging commit you can use rebasing. (However, notice that rebasing will change the hashs of the commites where it creates a new copies of the commits not just transfering them. FOR THAT IT USED JUST WITH LOCAL REPO'S):
+- To transfer changes from the main branch to yours without leaving a merging commit you can use rebasing. (However, notice that rebasing will change the hashs of the commites where it creates a new copy of the commits not just transfering them. FOR THAT IT USED JUST WITH LOCAL REPO'S):
 
-        #The current branch will be on top of main branch
+        #The current branch will be on top of the main branch
         $git rebase main
-        #To change a commit message with rebase command:
+        #To change a commit message with the rebase command:
         $git rebase -i Head~[# number going forward from the head]
-        #The previous command will open the editor, add `reward` before the commit that you want to update, save and close and that will open a new window for you to update the commit message. Add squash before the commit to combine it with the one above it.
+        #The previous command will open the editor, add `reward` before the commit that you want to update, save, and close and that will open a new window for you to update the commit message. Add squash before the commit to combine it with the one above it.
 
-- To get a specific in a branch, first go to the branch that you want to transfer the commmit to it, then run the following command:
+- To get a specific in a branch, first go to the branch that you want to transfer the commit to it, then run the following command:
 
         $git cherry-pick 0953213565.....[the required commit SHA]
 
@@ -100,40 +108,40 @@
         #To show the changes in the stash
         $git stash show stash@{0}
 
-- To see all the log of the reseting actions:
+- To see all the logs of the resetting actions:
 
         $git reflog
 
-        To return back to a reseted commit from ref log
+        To return back to a reset commit from the ref log
         $git reset --hard 09635135...[commit SHA]
 
 - To add submodules to your repo:
 
         $git submodule add [link of the modules repo]
 
-- To download submodules while cloning a repo contains them:
+- To download submodules while cloning a repo containing them:
 
         $git clone --recurse-submodules [repo url]
 
-- To serch in git log using date:
+- To search in git log using date:
 
         $git log --after="2022-7-1" --before="2022-12-8"
 
-- To serch in git log using a word in the commit message:
+- To search in git log using a word in the commit message:
 
         $git log --grep="Love" --author="MA"
 
-- To serch in git log using a word in the commit message:
+- To search in git log using a word in the commit message:
 
         $git log --grep="Love" --author="MA"
 
-- To serch in git log using a file changed in the commit:
+- To search in git log using a file changed in the commit:
 
         $git log --[filename]
 
 - If you want to return back to the version of the last commit:
 
-        # You can add -p flage if you want to remove just a few changes.
+        # You can add -p flag if you want to remove just a few changes.
         $git restore [file name]
 
         #To restore a specific commit for just a specific file
